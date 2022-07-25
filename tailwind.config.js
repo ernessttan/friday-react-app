@@ -8,11 +8,11 @@ module.exports = {
       colors: {
         "orange-400": "#D38B6E",
         "orange-300": "#DEAA96",
+        "orange-200": "#EACBBF",
         "grey-500": "#BDBDBD",
         "grey-200": "#F5F5F5",
-
-      }
+      },
     },
   },
   plugins: [],
-}
+};

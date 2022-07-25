@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body, #root {
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+@layer base {
+    main {
+        flex-grow: 1;
+    }
+}
+
+@layer components {
+    .nav-icon {
+        width: theme(width.8);
+        height: theme(height.8);
+        color: theme(colors.white)
+    }
+    .nav-link {
+        color: #fff;
+        font-weight: theme(fontWeight.semibold);
+        font-size: theme(fontSize.xl);
+        display: flex;
+        align-items: center;
+        gap: theme(gap.2);
+        padding: theme(padding.2);
+    }
+}
+
+@layer utilities {
+    .greyout {
+        opacity: .5;
+        transition: opacity 300ms ease-in-out;
+        background-color: #000;
+    }
+
+    .nav-link:hover {
+        background-color: theme(colors.orange-200);
+    }
+}
