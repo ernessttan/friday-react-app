@@ -4,7 +4,7 @@ function CompletedCard({
   classes, number, title,
 }) {
   return (
-    <div className={`${classes} bg-grey-200 p-3 flex flex-col items-center justify-center`}>
+    <div className={`${classes} bg-grey-200 rounded-md border border-grey-300 shadow-lg p-3 flex flex-col items-center justify-center`}>
       <h2>{number}</h2>
       <p>{title}</p>
     </div>

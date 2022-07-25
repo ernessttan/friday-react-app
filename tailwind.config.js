@@ -10,6 +10,7 @@ module.exports = {
         "orange-400": "#D38B6E",
         "orange-300": "#DEAA96",
         "orange-200": "#EACBBF",
+        "orange-100": "#F1E9E7",
         "grey-500": "#BDBDBD",
         "grey-400": "#E0E0E0",
         "grey-300": "#EEEEEE",

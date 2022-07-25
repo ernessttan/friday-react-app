@@ -1,10 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '../node_modules/react-date-picker/dist/DatePicker.css';
+@import '../node_modules/react-calendar/dist/Calendar.css';
+
+
 
 html, body, #root {
     min-height: 100vh;
     min-width: 100vw;
+}
+
+.react-date-picker__inputGroup {
+    font-size: theme('fontSize.sm');
+    color: theme('colors.grey-500');
+}
+
+.react-date-picker {
+    padding: 0 theme('padding.3') 0 theme('padding.3');
+    width: theme('width.2/3');
+}
+
+.react-calendar {
+    border-radius: theme('borderRadius.lg');
+    padding: theme(padding.5);
 }
 
 @layer base {
@@ -39,6 +58,7 @@ html, body, #root {
         height: theme(height.8);
         color: theme(colors.white)
     }
+
     .nav-link {
         color: #fff;
         font-weight: theme(fontWeight.semibold);
@@ -48,6 +68,17 @@ html, body, #root {
         gap: theme(gap.2);
         padding: theme(padding.2);
     }
+
+    .add-btn {
+        display: flex;
+        align-items: center;
+        gap: theme(gap.2);
+        border-radius: theme(borderRadius.full);
+        padding: theme(padding.2) theme(padding.4) theme(padding.2) theme(padding.4);
+        border: 1px solid theme(colors.orange-300);
+        color: theme(colors.orange-300);
+    }
+
 }
 
 @layer utilities {
@@ -59,5 +90,14 @@ html, body, #root {
 
     .nav-link:hover {
         background-color: theme(colors.orange-200);
+    }
+
+    .add-btn:hover {
+        background-color: theme(colors.orange-300);
+        color: theme(colors.white);
+    }
+
+    .add-btn.extend {
+        padding: theme(padding.3) theme(padding.8) theme(padding.3) theme(padding.8);
     }
 }
