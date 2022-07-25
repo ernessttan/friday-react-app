@@ -11,6 +11,21 @@ html, body, #root {
     main {
         flex-grow: 1;
     }
+
+    h1 {
+        font-size: theme(fontSize.3xl);
+        font-weight: theme(fontWeight.bold);
+    }
+
+    h2 {
+        font-size: theme(fontSize.2xl);
+        font-weight: theme(fontWeight.semibold);
+    }
+
+    h3 {
+        font-size: theme(fontSize.xl);
+        font-weight: theme(fontWeight.semibold);
+    }
 }
 
 @layer components {
