@@ -3,7 +3,6 @@ import CompletedCard from "./CompletedCard";
 function CompletedTasks() {
   return (
     <section>
-      <h3 className="text-grey-500">Completed Tasks</h3>
       <div className="flex justify-between flex-wrap gap-3">
         <CompletedCard
           title="Tasks Today"

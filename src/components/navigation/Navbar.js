@@ -6,7 +6,7 @@ import { HomeIcon, ClipboardListIcon } from "@heroicons/react/outline";
 function Navbar({ isOpen, toggleNav }) {
   return (
     <nav
-      className={`p-3 bg-orange-400 h-full fixed top-0 left-0 w-1/2 z-50 ease-in-out duration-500 ${
+      className={`p-3 bg-orange-500 h-full fixed top-0 left-0 w-1/2 z-50 ease-in-out duration-500 ${
         isOpen ? "-translate-x-0" : "-translate-x-full"
       }`}
     >

@@ -10,6 +10,11 @@ html, body, #root {
 @layer base {
     main {
         flex-grow: 1;
+        padding: theme(padding.2) 0 theme(padding.2) 0;
+    }
+
+    section {
+        padding: theme(padding.3) 0 theme(padding.3) 0;
     }
 
     h1 {
