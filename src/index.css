@@ -69,14 +69,24 @@ html, body, #root {
         padding: theme(padding.2) 0 theme(padding.2) 0;
     }
 
-    .add-btn {
+    .add-btn, .action-btn {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: theme(gap.2);
         border-radius: theme(borderRadius.full);
         padding: theme(padding.2) theme(padding.4) theme(padding.2) theme(padding.4);
         border: 1px solid theme(colors.orange-300);
         color: theme(colors.orange-300);
+    }
+
+    .auth-input {
+        background-color: theme(colors.grey-300);
+        border-radius: theme(borderRadius.md);
+        width: theme(width.full);
+        padding: theme(padding.3) theme(padding.4) theme(padding.3) theme(padding.4);
+        margin: theme(margin.2) 0 theme(margin.2) 0;
+        box-shadow: theme(boxShadow.md);
     }
 
 }
@@ -97,7 +107,16 @@ html, body, #root {
         color: theme(colors.white);
     }
 
+    .action-btn:hover {
+        background-color: theme(colors.orange-300);
+        color: theme(colors.white);
+    }
+
     .add-btn.extend {
         padding: theme(padding.3) theme(padding.8) theme(padding.3) theme(padding.8);
+    }
+
+    .auth-input::placeholder {
+        color: theme(colors.grey-500);
     }
 }
