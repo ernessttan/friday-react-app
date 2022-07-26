@@ -66,7 +66,7 @@ html, body, #root {
         display: flex;
         align-items: center;
         gap: theme(gap.2);
-        padding: theme(padding.2);
+        padding: theme(padding.2) 0 theme(padding.2) 0;
     }
 
     .add-btn {

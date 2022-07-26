@@ -2,7 +2,7 @@ import proptypes from "prop-types";
 
 function ProjectCard({ project }) {
   return (
-    <div className="border border-grey-300 shadow-lg rounded-md w-3/5 shrink-0 py-6 px-5">
+    <div className="border border-grey-300 shadow-lg rounded-md w-1/2 shrink-0 py-6 px-5">
       <h3>{project.title}</h3>
       <p className="text-grey-400">5 Tasks Left</p>
       <div className="my-2 w-full bg-grey-400 rounded-full h-2.5">

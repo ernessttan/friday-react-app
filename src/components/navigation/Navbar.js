@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { XIcon } from "@heroicons/react/solid";
 import { HomeIcon, ClipboardListIcon } from "@heroicons/react/outline";
+import ProjectsMenu from "./ProjectsMenu";
 
 function Navbar({ isOpen, toggleNav }) {
   return (
     <nav
-      className={`p-3 bg-orange-500 h-full fixed top-0 left-0 w-1/2 z-50 ease-in-out duration-500 ${
+      className={`p-3 bg-orange-500 h-full fixed top-0 left-0 w-1/2 z-3 ease-in-out duration-500 ${
         isOpen ? "-translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -15,7 +16,8 @@ function Navbar({ isOpen, toggleNav }) {
           <XIcon />
         </button>
       </div>
-      <ul className="mt-8 flex flex-col gap-3">
+      <h1 className="text-white">Friday</h1>
+      <ul className="my-8 flex flex-col gap-3">
         <li className="nav-link">
           <HomeIcon className="nav-icon" />
           <Link to="/">Home</Link>
@@ -25,6 +27,7 @@ function Navbar({ isOpen, toggleNav }) {
           <Link to="/tasks">Tasks</Link>
         </li>
       </ul>
+      <ProjectsMenu />
     </nav>
   );
 }

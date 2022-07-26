@@ -1,22 +1,17 @@
-/* eslint-disable no-unused-vars */
 import Modal from "react-modal";
-import proptypes from "prop-types";
-import { XIcon } from "@heroicons/react/solid";
+import Proptypes from "prop-types";
 import { useState } from "react";
-import AddProject from "./AddProject";
-import AddDate from "./AddDate";
+import { XIcon } from "@heroicons/react/solid";
 
-function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
-  const [newTask, setNewTask] = useState({
+function CreateProjectModal({ modalIsOpen, toggleModal }) {
+  const [newProject, setNewProject] = useState({
     title: "",
     description: "",
-    project: "",
-    dueDate: "",
   });
 
   const handleChange = (event) => {
-    setNewTask({
-      ...newTask,
+    setNewProject({
+      ...newProject,
       [event.target.name]: event.target.value,
     });
   };
@@ -24,12 +19,12 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await fetch("http://localhost:4000/tasks", {
+      await fetch("http://localhost:4000/projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newTask),
+        body: JSON.stringify(newProject),
       }).then(() => {
         toggleModal();
       });
@@ -67,18 +62,14 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
           type="text"
           name="title"
           onChange={handleChange}
-          value={newTask.title}
+          value={newProject.title}
           placeholder="Untitled"
         />
-        <div className="my-5">
-          <AddProject setNewTask={setNewTask} />
-          <AddDate setNewTask={setNewTask} />
-        </div>
         <textarea
           className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 my-5 py-3"
           placeholder="Description"
           name="description"
-          value={newTask.description}
+          value={newProject.description}
           onChange={handleChange}
         />
         <div className="flex justify-end">
@@ -91,10 +82,9 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
   );
 }
 
-AddTaskModal.propTypes = {
-  modalIsOpen: proptypes.bool.isRequired,
-  setModalIsOpen: proptypes.func.isRequired,
-  toggleModal: proptypes.func.isRequired,
+CreateProjectModal.propTypes = {
+  modalIsOpen: Proptypes.bool.isRequired,
+  toggleModal: Proptypes.func.isRequired,
 };
 
-export default AddTaskModal;
+export default CreateProjectModal;

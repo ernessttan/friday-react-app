@@ -32,7 +32,7 @@ function AddProject({ setNewTask }) {
   const toggleProjects = () => setIsProjectsOpen(!isProjectsOpen);
 
   const handleProjectSelect = (event) => {
-    setSelectedProject(event.target.value);
+    setSelectedProject(event.target.textContent);
     setIsProjectsOpen(false);
     setNewTask((prevTask) => ({
       ...prevTask,
@@ -42,9 +42,9 @@ function AddProject({ setNewTask }) {
 
   return (
     <div className="flex items-center gap-3 my-2">
-      <div className="flex items-center gap-1 w-1/3">
+      <div className="flex items-center gap-2 w-1/3">
         <BriefcaseIcon className="h-5 w-5 text-grey-500" />
-        <p className="text-grey-500">Project</p>
+        <p className="text-grey-500 text-sm">Project</p>
       </div>
       <div className="relative inline-block text-left w-2/3 px-4">
         <div>
@@ -66,7 +66,7 @@ function AddProject({ setNewTask }) {
                   className="flex justify-start"
                   type="button"
                   name="project"
-                  value={project.title}
+                  value={project.id}
                   onClick={handleProjectSelect}
                 >
                   {project.title}

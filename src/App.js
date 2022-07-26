@@ -4,6 +4,8 @@ import Header from "./components/common/Header";
 
 function App() {
   const Home = lazy(() => import("./pages/Home"));
+  const Projects = lazy(() => import("./pages/Projects"));
+
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
@@ -11,6 +13,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
           </Routes>
         </div>
       </Suspense>

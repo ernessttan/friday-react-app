@@ -18,9 +18,9 @@ function AddDate({ setNewTask }) {
 
   return (
     <div className="flex items-center gap-3 my-2">
-      <div className="flex items-center gap-1 w-1/3">
+      <div className="flex items-center gap-2 w-1/3">
         <CalendarIcon className="h-5 w-5 text-grey-500" />
-        <p className="text-grey-500">Due Date</p>
+        <p className="text-grey-500 text-sm">Due</p>
       </div>
       <DatePicker
         className="grow"

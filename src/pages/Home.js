@@ -1,5 +1,5 @@
 import CompletedTasks from "../components/home/CompletedTasks";
-import ProjectGallery from "../components/projects/ProjectGallery";
+import ProjectGallery from "../components/home/ProjectGallery";
 
 function Home() {
   return (
