@@ -21,6 +21,25 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
     });
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setModalIsOpen(false);
+
+    try {
+      await fetch("http://localhost:4000/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      }).then(() => {
+        toggleModal();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -33,7 +52,7 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
         },
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="flex justify-end mb-5">
           <button
             onClick={toggleModal}
