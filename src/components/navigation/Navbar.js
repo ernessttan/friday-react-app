@@ -30,7 +30,7 @@ function Navbar({ isOpen, toggleNav }) {
       <ul className="my-8 flex flex-col gap-3">
         <li className="nav-link">
           <HomeIcon className="nav-icon" />
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li className="nav-link">
           <ClipboardListIcon className="nav-icon" />

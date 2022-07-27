@@ -1,33 +1,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { BriefcaseIcon } from "@heroicons/react/outline";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import proptypes from "prop-types";
 
 function AddProject({ setNewTask }) {
-  const DUMMY_PROJECTS = [
-    {
-      id: "1",
-      userId: "0",
-      title: "Project 1",
-      tasks: ["0", "1", "2"],
-    },
-    {
-      id: "2",
-      userId: "1",
-      title: "Project 2",
-      tasks: ["3", "4", "5"],
-    },
-    {
-      id: "3",
-      userId: "2",
-      title: "Project 3",
-      tasks: ["6", "7", "8"],
-    },
-  ];
-
+  const [projects, setProjects] = useState();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/projects")
+      .then((res) => res.json())
+      .then((data) => setProjects(data.projects));
+  }, []);
 
   const toggleProjects = () => setIsProjectsOpen(!isProjectsOpen);
 
@@ -36,7 +22,7 @@ function AddProject({ setNewTask }) {
     setIsProjectsOpen(false);
     setNewTask((prevTask) => ({
       ...prevTask,
-      project: event.target.value,
+      projectId: event.target.value,
     }));
   };
 
@@ -59,20 +45,20 @@ function AddProject({ setNewTask }) {
           }`}
         >
           <div className="p-5 flex flex-col gap-2">
-            {
-              DUMMY_PROJECTS.map((project) => (
+            { projects && (
+              projects.map((project) => (
                 <button
                   key={project.id}
                   className="flex justify-start"
                   type="button"
-                  name="project"
+                  name="projectId"
                   value={project.id}
                   onClick={handleProjectSelect}
                 >
                   {project.title}
                 </button>
               ))
-            }
+            )}
           </div>
         </div>
       </div>

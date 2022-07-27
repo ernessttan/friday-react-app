@@ -1,12 +1,8 @@
-import { useContext } from "react";
 import CompletedTasks from "../components/home/CompletedTasks";
 import ProjectGallery from "../components/home/ProjectGallery";
 import Header from "../components/common/Header";
-import AuthContext from "../context/AuthContext";
 
 function Home() {
-  const auth = useContext(AuthContext);
-  console.log(auth);
   return (
     <>
       <Header />

@@ -1,15 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import ProjectTab from "./ProjectTab";
 import CreateProjectButton from "./CreateProjectButton";
+import AuthContext from "../../context/AuthContext";
 
 function ProjectsMenu() {
+  const auth = useContext(AuthContext);
   const [projects, setProjects] = useState();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:4000/projects")
+    fetch(`http://localhost:4000/projects/user/${auth.userId}`)
       .then((res) => res.json())
       .then((data) => setProjects(data.projects));
   }, []);
@@ -17,6 +19,7 @@ function ProjectsMenu() {
   const toggleProjects = () => {
     setIsProjectsOpen(!isProjectsOpen);
   };
+
   return (
     <>
       <div className="mt-5 w-full flex items-center justify-between">

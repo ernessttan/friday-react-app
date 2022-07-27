@@ -89,6 +89,14 @@ html, body, #root {
         box-shadow: theme(boxShadow.md);
     }
 
+    .task-card {
+        border: 1px solid theme(colors.grey-300);
+        border-radius: theme(borderRadius.md);
+        width: theme(width.full);
+        padding: theme(padding.3) theme(padding.4) theme(padding.3) theme(padding.4);
+        box-shadow: theme(boxShadow.md);
+    }
+
 }
 
 @layer utilities {

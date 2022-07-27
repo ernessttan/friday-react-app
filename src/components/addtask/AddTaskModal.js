@@ -37,6 +37,7 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
         body: JSON.stringify(newTask),
       }).then((res) => res.json())
         .then((taskData) => {
+          alert(taskData.message);
           toggleModal();
         });
     } catch (error) {
