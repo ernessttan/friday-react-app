@@ -17,20 +17,20 @@ function Login() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(loginInfo);
     try {
-      fetch("http://localhost:4000/users", {
+      await fetch("http://localhost:4000/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(loginInfo),
-      }).then(() => {
-        // navigate to home page
-        navigate("/home");
-      });
+      }).then((res) => res.json())
+        .then((userData) => {
+          localStorage.setItem("token", userData.token);
+          navigate("/home");
+        });
     } catch (error) {
       setErrorMessage(error.message);
     }

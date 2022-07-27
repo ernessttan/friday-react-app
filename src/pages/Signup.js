@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -17,22 +18,23 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(signUpInfo);
     try {
-      fetch("http://localhost:4000/users", {
+      await fetch("http://localhost:4000/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(signUpInfo),
-      }).then(() => {
-        // navigate to home page
-        navigate("/home");
-      });
+      })
+        .then((res) => res.json())
+        .then((userData) => {
+          localStorage.setItem("token", userData.token);
+          navigate("/home");
+        });
     } catch (error) {
-      setErrorMessage(error.message);
+      console.log(error);
     }
   };
 
