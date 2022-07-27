@@ -1,11 +1,28 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { DotsHorizontalIcon, PencilIcon, TrashIcon } from "@heroicons/react/solid";
+import AuthContext from "../../context/AuthContext";
 
-function ProjectTab({ project }) {
+function ProjectTab({ project, setProjects }) {
+  const auth = useContext(AuthContext);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const toggleOptions = () => {
     setIsOptionsOpen(!isOptionsOpen);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await fetch(`http://localhost:4000/projects/${project.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
+        },
+      })
+        .then(() => setProjects((prevProjects) => prevProjects.filter((p) => p.id !== project.id)));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -14,7 +31,7 @@ function ProjectTab({ project }) {
       <button type="button" onClick={toggleOptions} className="relative">
         <DotsHorizontalIcon className="h-5 w-5" />
       </button>
-      <div className={`origin-top-right absolute right-0 bg-white shadow-lg rounded w-40 mt-36 p-3 z-40 flex flex-col gap-2 ${
+      <div className={`origin-top-right absolute right-0 bg-white shadow-lg rounded w-40 mt-36 p-3 z-40 flex flex-col gap-1 ${
         isOptionsOpen ? "" : "hidden"
       }`}
       >
@@ -22,8 +39,12 @@ function ProjectTab({ project }) {
           <PencilIcon className="h-5 w-5" />
           <p>Edit Project</p>
         </button>
-        <button type="button" className="w-full text-black flex items-center gap-2 py-2 hover:bg-orange-100">
-          <TrashIcon className="h-5 w-5" />
+        <button
+          onClick={handleDelete}
+          type="button"
+          className="w-full text-black flex items-center gap-2 py-2 hover:bg-orange-100"
+        >
+          <TrashIcon className="fill-red-500 h-5 w-5" />
           <p>Delete Project</p>
         </button>
       </div>
@@ -38,6 +59,7 @@ ProjectTab.propTypes = {
     title: PropTypes.string.isRequired,
     tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
+  setProjects: PropTypes.func.isRequired,
 };
 
 export default ProjectTab;

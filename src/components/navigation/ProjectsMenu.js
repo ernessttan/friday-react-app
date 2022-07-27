@@ -31,11 +31,14 @@ function ProjectsMenu() {
         </button>
       </div>
       <div className={`${isProjectsOpen ? "flex" : "hidden"} w-full flex-col gap-3 my-5`}>
-        <CreateProjectButton />
+        <CreateProjectButton
+          setProjects={setProjects}
+        />
         {projects && projects.map((project) => (
           <ProjectTab
             key={project.id}
             project={project}
+            setProjects={setProjects}
           />
         ))}
       </div>

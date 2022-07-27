@@ -1,8 +1,9 @@
 import { PlusIcon } from "@heroicons/react/solid";
 import { useState } from "react";
+import Proptypes from "prop-types";
 import CreateProjectModal from "./CreateProjectModal";
 
-function CreateProjectButton() {
+function CreateProjectButton({ setProjects }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
   return (
@@ -16,6 +17,7 @@ function CreateProjectButton() {
         New Project
       </button>
       <CreateProjectModal
+        setProjects={setProjects}
         modalIsOpen={modalIsOpen}
         toggleModal={toggleModal}
       />
@@ -23,5 +25,9 @@ function CreateProjectButton() {
 
   );
 }
+
+CreateProjectButton.propTypes = {
+  setProjects: Proptypes.func.isRequired,
+};
 
 export default CreateProjectButton;

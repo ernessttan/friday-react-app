@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { BriefcaseIcon } from "@heroicons/react/outline";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import proptypes from "prop-types";
+import AuthContext from "../../context/AuthContext";
 
 function AddProject({ setNewTask }) {
+  const auth = useContext(AuthContext);
   const [projects, setProjects] = useState();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/projects")
+    fetch(`http://localhost:4000/projects/${auth.userId}`)
       .then((res) => res.json())
       .then((data) => setProjects(data.projects));
   }, []);

@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ProjectCard from "./ProjectCard";
+import AuthContext from "../../context/AuthContext";
 
 function ProjectGallery() {
+  const auth = useContext(AuthContext);
   const [projects, setProjects] = useState();
 
   useEffect(() => {
-    fetch("http://localhost:4000/projects")
+    fetch(`http://localhost:4000/projects/user/${auth.userId}`)
       .then((res) => res.json())
       .then((data) => setProjects(data.projects));
   }, []);

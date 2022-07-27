@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { XIcon } from "@heroicons/react/solid";
 import AuthContext from "../../context/AuthContext";
 
-function CreateProjectModal({ modalIsOpen, toggleModal }) {
+function CreateProjectModal({ modalIsOpen, toggleModal, setProjects }) {
   const auth = useContext(AuthContext);
   const [newProject, setNewProject] = useState({
     title: "",
@@ -30,6 +30,7 @@ function CreateProjectModal({ modalIsOpen, toggleModal }) {
         },
         body: JSON.stringify(newProject),
       }).then(() => {
+        setProjects((prevProjects) => [...prevProjects, newProject]);
         toggleModal();
       });
     } catch (error) {
@@ -89,6 +90,7 @@ function CreateProjectModal({ modalIsOpen, toggleModal }) {
 CreateProjectModal.propTypes = {
   modalIsOpen: Proptypes.bool.isRequired,
   toggleModal: Proptypes.func.isRequired,
+  setProjects: Proptypes.func.isRequired,
 };
 
 export default CreateProjectModal;
