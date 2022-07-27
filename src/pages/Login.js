@@ -1,9 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
+  console.log(auth);
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -28,7 +31,7 @@ function Login() {
         body: JSON.stringify(loginInfo),
       }).then((res) => res.json())
         .then((userData) => {
-          localStorage.setItem("token", userData.token);
+          auth.login(userData.userId, userData.token);
           navigate("/home");
         });
     } catch (error) {

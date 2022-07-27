@@ -1,10 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { XIcon } from "@heroicons/react/solid";
 import { HomeIcon, ClipboardListIcon } from "@heroicons/react/outline";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthContext";
 import ProjectsMenu from "./ProjectsMenu";
 
 function Navbar({ isOpen, toggleNav }) {
+  const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    auth.logout();
+    navigate("/login");
+  };
+
   return (
     <nav
       className={`p-3 bg-orange-500 h-full fixed top-0 left-0 w-1/2 z-3 ease-in-out duration-500 ${
@@ -28,6 +38,11 @@ function Navbar({ isOpen, toggleNav }) {
         </li>
       </ul>
       <ProjectsMenu />
+      <div className="absolute bottom-0 right-0 p-3">
+        <button onClick={handleLogOut} type="button">
+          Logout
+        </button>
+      </div>
     </nav>
   );
 }

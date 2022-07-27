@@ -21,6 +21,8 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/react-in-jsx-scope": "off",
         "semi": ["warn", "always"],
-        "quotes": ["warn", "double"]
+        "quotes": ["warn", "double"],
+        "no-shadow": "off",
+        "react/jsx-no-constructed-context-values": "off"
     }
 }
