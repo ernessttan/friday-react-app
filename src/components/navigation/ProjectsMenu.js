@@ -1,30 +1,18 @@
-import { useState } from "react";
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from "react";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import ProjectTab from "./ProjectTab";
 import CreateProjectButton from "./CreateProjectButton";
 
 function ProjectsMenu() {
-  const DUMMY_PROJECTS = [
-    {
-      id: "1",
-      userId: "0",
-      title: "Project 1",
-      tasks: ["0", "1", "2"],
-    },
-    {
-      id: "2",
-      userId: "1",
-      title: "Project 2",
-      tasks: ["3", "4", "5"],
-    },
-    {
-      id: "3",
-      userId: "2",
-      title: "Project 3",
-      tasks: ["6", "7", "8"],
-    },
-  ];
+  const [projects, setProjects] = useState();
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/projects")
+      .then((res) => res.json())
+      .then((data) => setProjects(data.projects));
+  }, []);
 
   const toggleProjects = () => {
     setIsProjectsOpen(!isProjectsOpen);
@@ -41,7 +29,7 @@ function ProjectsMenu() {
       </div>
       <div className={`${isProjectsOpen ? "flex" : "hidden"} w-full flex-col gap-3 my-5`}>
         <CreateProjectButton />
-        {DUMMY_PROJECTS.map((project) => (
+        {projects && projects.map((project) => (
           <ProjectTab
             key={project.id}
             project={project}

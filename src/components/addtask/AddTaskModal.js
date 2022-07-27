@@ -2,16 +2,20 @@
 import Modal from "react-modal";
 import proptypes from "prop-types";
 import { XIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import AddProject from "./AddProject";
 import AddDate from "./AddDate";
+import AuthContext from "../../context/AuthContext";
 
 function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
+  const auth = useContext(AuthContext);
   const [newTask, setNewTask] = useState({
     title: "",
     description: "",
-    project: "",
+    projectId: "",
     dueDate: "",
+    completed: false,
+    userId: auth.userId,
   });
 
   const handleChange = (event) => {
@@ -27,13 +31,14 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
       await fetch("http://localhost:4000/tasks", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${auth.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newTask),
-      }).then(() => {
-        toggleModal();
-      });
+      }).then((res) => res.json())
+        .then((taskData) => {
+          toggleModal();
+        });
     } catch (error) {
       console.log(error);
     }

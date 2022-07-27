@@ -39,7 +39,7 @@ function Navbar({ isOpen, toggleNav }) {
       </ul>
       <ProjectsMenu />
       <div className="absolute bottom-0 right-0 p-3">
-        <button onClick={handleLogOut} type="button">
+        <button className="font-bold text-white" onClick={handleLogOut} type="button">
           Logout
         </button>
       </div>

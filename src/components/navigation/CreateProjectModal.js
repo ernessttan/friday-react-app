@@ -1,12 +1,15 @@
 import Modal from "react-modal";
 import Proptypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { XIcon } from "@heroicons/react/solid";
+import AuthContext from "../../context/AuthContext";
 
 function CreateProjectModal({ modalIsOpen, toggleModal }) {
+  const auth = useContext(AuthContext);
   const [newProject, setNewProject] = useState({
     title: "",
     description: "",
+    userId: auth.userId,
   });
 
   const handleChange = (event) => {
@@ -22,6 +25,7 @@ function CreateProjectModal({ modalIsOpen, toggleModal }) {
       await fetch("http://localhost:4000/projects", {
         method: "POST",
         headers: {
+          Authorization: `Bearer ${auth.token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newProject),
