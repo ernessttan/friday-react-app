@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
-import Modal from "react-modal";
 import proptypes from "prop-types";
-import { XIcon } from "@heroicons/react/solid";
 import { useState, useContext } from "react";
 import AddProject from "./AddProject";
 import AddDate from "./AddDate";
 import AuthContext from "../../context/AuthContext";
+import Modal from "../common/Modal";
 
-function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
+function AddTask({ modalIsOpen, toggleModal }) {
   const auth = useContext(AuthContext);
   const [newTask, setNewTask] = useState({
     title: "",
@@ -37,7 +36,6 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
         body: JSON.stringify(newTask),
       }).then((res) => res.json())
         .then((taskData) => {
-          alert(taskData.message);
           toggleModal();
         });
     } catch (error) {
@@ -46,29 +44,8 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
   };
 
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      ariaHideApp={false}
-      style={{
-        content: {
-          position: "absolute",
-          borderRadius: "20px",
-          paddingLeft: "25px",
-          paddingRight: "25px",
-          zIndex: "5",
-        },
-      }}
-    >
+    <Modal isOpen={modalIsOpen} toggleModal={toggleModal}>
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-end mb-5">
-          <button
-            onClick={toggleModal}
-            type="button"
-            className="h-5 w-5 text-orange-400"
-          >
-            <XIcon />
-          </button>
-        </div>
         <input
           className="w-full placeholder:text-grey-500 text-black-500 font-semibold text-3xl"
           type="text"
@@ -82,7 +59,7 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
           <AddDate setNewTask={setNewTask} />
         </div>
         <textarea
-          className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 my-5 py-3"
+          className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 py-3"
           placeholder="Description"
           name="description"
           value={newTask.description}
@@ -98,10 +75,9 @@ function AddTaskModal({ modalIsOpen, setModalIsOpen, toggleModal }) {
   );
 }
 
-AddTaskModal.propTypes = {
+AddTask.propTypes = {
   modalIsOpen: proptypes.bool.isRequired,
-  setModalIsOpen: proptypes.func.isRequired,
   toggleModal: proptypes.func.isRequired,
 };
 
-export default AddTaskModal;
+export default AddTask;

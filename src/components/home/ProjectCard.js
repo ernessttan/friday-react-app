@@ -4,7 +4,7 @@ function ProjectCard({ project }) {
   return (
     <div className="border border-grey-300 shadow-lg rounded-md w-1/2 shrink-0 py-6 px-5">
       <h3>{project.title}</h3>
-      <p className="text-grey-400">
+      <p className="text-grey-500">
         {project.tasks.length}
         {" "}
         Tasks

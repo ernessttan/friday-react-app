@@ -24,6 +24,7 @@
         "quotes": ["warn", "double"],
         "no-shadow": "off",
         "react/jsx-no-constructed-context-values": "off",
-        "no-alert": "off"
+        "no-alert": "off",
+        "react/jsx-props-no-spreading": "off"
     }
 }

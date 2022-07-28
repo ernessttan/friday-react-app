@@ -12,7 +12,7 @@ function AddProject({ setNewTask }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/${auth.userId}`)
+    fetch(`http://localhost:4000/projects/user/${auth.userId}`)
       .then((res) => res.json())
       .then((data) => setProjects(data.projects));
   }, []);
@@ -42,7 +42,7 @@ function AddProject({ setNewTask }) {
         </div>
         <div
           id="projectMenu"
-          className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border-grey-200 bg-white z-40 ${
+          className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-grey-300 bg-white z-40 ${
             isProjectsOpen ? "" : "hidden"
           }`}
         >

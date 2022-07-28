@@ -38,7 +38,7 @@ function TaskCard({ task, setTasks }) {
 }
 
 TaskCard.propTypes = {
-  task: Proptypes.object.shape({
+  task: Proptypes.shape({
     id: Proptypes.string.isRequired,
     title: Proptypes.string.isRequired,
     dueDate: Proptypes.string.isRequired,

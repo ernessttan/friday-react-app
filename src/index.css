@@ -97,6 +97,12 @@ html, body, #root {
         box-shadow: theme(boxShadow.md);
     }
 
+    .error-msg {
+        color: theme(colors.red.500);
+        font-size: theme(fontSize.sm);
+        font-weight: theme(fontWeight.semibold);
+    }
+
 }
 
 @layer utilities {

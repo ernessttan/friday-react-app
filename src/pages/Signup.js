@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/common/FormElements/Input";
 
 function Signup() {
   const navigate = useNavigate();
@@ -9,7 +10,6 @@ function Signup() {
     email: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setSignUpInfo({
@@ -45,30 +45,30 @@ function Signup() {
         <br />
         Started.
       </h1>
-      <p className="text-red-500">{errorMessage}</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 my-5">
-        <label htmlFor="email" className="text-sm">
-          Email
-          <input
-            onChange={handleChange}
-            name="email"
-            type="email"
-            value={signUpInfo.email}
-            placeholder="Email"
-            className="auth-input"
-          />
-        </label>
-
-        <label htmlFor="password" className="text-sm">
-          Password
-          <input
-            onChange={handleChange}
-            name="password"
-            type="text"
-            value={signUpInfo.password}
-            className="auth-input"
-          />
-        </label>
+        <Input
+          handleChange={handleChange}
+          name="email"
+          type="email"
+          value={signUpInfo.email}
+          placeholder="Email"
+          className="auth-input"
+          label="Email"
+          errorMessage="Please enter a valid email"
+          required
+        />
+        <Input
+          handleChange={handleChange}
+          name="password"
+          type="password"
+          value={signUpInfo.password}
+          placeholder="Password"
+          className="auth-input"
+          label="Password"
+          pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$"
+          errorMessage="Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!"
+          required
+        />
         <button type="submit" className="action-btn w-full my-3">
           Sign Up
         </button>

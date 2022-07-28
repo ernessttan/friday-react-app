@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext";
-import TaskCard from "../common/TaskCard";
+import TaskCard from "./TaskCard";
 
 function TaskList() {
   const auth = useContext(AuthContext);
@@ -14,7 +14,6 @@ function TaskList() {
 
   return (
     <section>
-      <h1 className="text-orange-500">Tasks</h1>
       <div className="flex flex-col gap-4 overflow-x-scroll scroll-smooth w-full">
         {tasks && (
           tasks.map((task) => (
