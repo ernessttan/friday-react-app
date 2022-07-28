@@ -1,5 +1,5 @@
-import TaskList from "../components/tasks/TaskList";
-import Header from "../components/common/Header";
+import TaskList from "./TaskList/TaskList";
+import Header from "../../components/Header";
 
 function Tasks() {
   return (

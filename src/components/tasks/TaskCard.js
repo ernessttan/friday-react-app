@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import Proptypes from "prop-types";
 import { CalendarIcon } from "@heroicons/react/outline";
-import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
 function TaskCard({ task, setTasks }) {
   const auth = useContext(AuthContext);
+
   const deleteHandler = async () => {
     try {
       await fetch(`http://localhost:4000/tasks/${task.id}`, {

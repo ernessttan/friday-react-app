@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import ProjectCard from "./ProjectCard";
-import AuthContext from "../../context/AuthContext";
+import ProjectCard from "../../../components/home/ProjectCard";
+import AuthContext from "../../../context/AuthContext";
 
 function ProjectGallery() {
   const auth = useContext(AuthContext);

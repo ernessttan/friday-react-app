@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { MenuIcon } from "@heroicons/react/solid";
 import { PlusIcon } from "@heroicons/react/outline";
-import Navbar from "../navigation/Navbar";
-import AddTask from "../addtask/AddTask";
+import Navbar from "./Navigation/Navbar";
+import AddTask from "./addtask/AddTask";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
-import proptypes from "prop-types";
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
+import Proptypes from "prop-types";
+import AuthContext from "../../context/AuthContext";
+import Modal from "../Modal";
 import AddProject from "./AddProject";
 import AddDate from "./AddDate";
-import AuthContext from "../../context/AuthContext";
-import Modal from "../common/Modal";
 
 function AddTask({ modalIsOpen, toggleModal }) {
   const auth = useContext(AuthContext);
@@ -76,8 +75,8 @@ function AddTask({ modalIsOpen, toggleModal }) {
 }
 
 AddTask.propTypes = {
-  modalIsOpen: proptypes.bool.isRequired,
-  toggleModal: proptypes.func.isRequired,
+  modalIsOpen: Proptypes.bool.isRequired,
+  toggleModal: Proptypes.func.isRequired,
 };
 
 export default AddTask;

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import AuthContext from "../../context/AuthContext";
-import TaskCard from "./TaskCard";
+import AuthContext from "../../../context/AuthContext";
+import TaskCard from "../../../components/Tasks/TaskCard";
 
 function TaskList() {
   const auth = useContext(AuthContext);

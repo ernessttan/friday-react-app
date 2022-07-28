@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Input from "../components/common/FormElements/Input";
+import Input from "../../components/Forms/Input";
 
 function Signup() {
   const navigate = useNavigate();

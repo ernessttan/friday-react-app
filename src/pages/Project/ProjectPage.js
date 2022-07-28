@@ -1,6 +1,6 @@
-import Header from "../components/common/Header";
+import Header from "../../components/Header";
 
-function Projects() {
+function Project() {
   return (
     <>
       <Header />
@@ -11,4 +11,4 @@ function Projects() {
 
   );
 }
-export default Projects;
+export default Project;

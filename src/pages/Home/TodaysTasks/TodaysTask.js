@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import { useEffect, useContext, useState } from "react";
-import TaskCard from "../tasks/TaskCard";
-import AuthContext from "../../context/AuthContext";
+import AuthContext from "../../../context/AuthContext";
+import TaskCard from "../../../components/Tasks/TaskCard";
 
-function TodaysTask() {
+function TaskOverview() {
   const auth = useContext(AuthContext);
   const [tasks, setTasks] = useState();
 
@@ -36,4 +36,4 @@ function TodaysTask() {
   );
 }
 
-export default TodaysTask;
+export default TaskOverview;

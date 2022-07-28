@@ -1,6 +1,6 @@
 import CompletedCard from "./CompletedCard";
 
-function CompletedTasks() {
+function TaskOverview() {
   return (
     <section>
       <div className="flex justify-between flex-wrap gap-3">
@@ -24,4 +24,4 @@ function CompletedTasks() {
   );
 }
 
-export default CompletedTasks;
+export default TaskOverview;

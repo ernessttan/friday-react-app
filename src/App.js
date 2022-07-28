@@ -8,12 +8,14 @@ function App() {
     login, logout, token, userId,
   } = useAuth();
 
-  const Welcome = lazy(() => import("./pages/Welcome"));
-  const Signup = lazy(() => import("./pages/Signup"));
-  const Login = lazy(() => import("./pages/Login"));
-  const Home = lazy(() => import("./pages/Home"));
-  const Projects = lazy(() => import("./pages/Projects"));
-  const Tasks = lazy(() => import("./pages/Tasks"));
+  
+  // Lazy Load Pages for code splitting
+  const Welcome = lazy(() => import("./pages/Authentication/Welcome"));
+  const Signup = lazy(() => import("./pages/Authentication/Signup"));
+  const Login = lazy(() => import("./pages/Authentication/Login"));
+  const Home = lazy(() => import("./pages/Home/Home"));
+  const Projects = lazy(() => import("./pages/Project/Project"));
+  const Tasks = lazy(() => import("./pages/Tasks/Tasks"));
 
   return (
     <AuthContext.Provider value={{

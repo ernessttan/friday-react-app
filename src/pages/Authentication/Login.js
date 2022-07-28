@@ -1,17 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
+import Input from "../../components/Forms/Input";
 
 function Login() {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
-  console.log(auth);
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setLoginInfo({
@@ -35,7 +34,7 @@ function Login() {
           navigate("/home");
         });
     } catch (error) {
-      setErrorMessage(error.message);
+      console.log(error);
     }
   };
 
@@ -46,30 +45,27 @@ function Login() {
         <br />
         Let's go!
       </h1>
-      <p className="text-red-500">{errorMessage}</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 my-5">
-        <label htmlFor="email" className="text-sm">
-          Email
-          <input
-            onChange={handleChange}
-            name="email"
-            type="email"
-            value={loginInfo.email}
-            placeholder="Email"
-            className="auth-input"
-          />
-        </label>
-
-        <label htmlFor="password" className="text-sm">
-          Password
-          <input
-            onChange={handleChange}
-            name="password"
-            type="text"
-            value={loginInfo.password}
-            className="auth-input"
-          />
-        </label>
+        <Input
+          handleChange={handleChange}
+          name="email"
+          type="email"
+          value={loginInfo.email}
+          placeholder="Email"
+          className="auth-input"
+          errorMessage="Please enter a valid email"
+          required
+        />
+        <Input
+          handleChange={handleChange}
+          name="password"
+          type="password"
+          value={loginInfo.password}
+          placeholder="Password"
+          className="auth-input"
+          errorMessage="Please enter a valid password"
+          required
+        />
         <button type="submit" className="action-btn w-full my-3">
           Login
         </button>
