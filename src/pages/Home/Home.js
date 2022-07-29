@@ -1,6 +1,6 @@
 import TaskOverview from "./TaskOverview/TaskOverview";
 import ProjectGallery from "./ProjectGallery/ProjectGallery";
-import Header from "../../components/common/Header";
+import Header from "../../components/Header";
 
 function Home() {
   return (

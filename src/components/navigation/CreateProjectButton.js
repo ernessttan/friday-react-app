@@ -1,11 +1,12 @@
 import { PlusIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import Proptypes from "prop-types";
-import CreateProjectModal from "./CreateProjectModal";
+import CreateProject from "../Projects/CreateProject";
 
 function CreateProjectButton({ setProjects }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
+
   return (
     <>
       <button
@@ -16,7 +17,7 @@ function CreateProjectButton({ setProjects }) {
         <PlusIcon className="h-5 w-5" />
         New Project
       </button>
-      <CreateProjectModal
+      <CreateProject
         setProjects={setProjects}
         modalIsOpen={modalIsOpen}
         toggleModal={toggleModal}

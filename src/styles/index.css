@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import '../node_modules/react-date-picker/dist/DatePicker.css';
-@import '../node_modules/react-calendar/dist/Calendar.css';
+@import '../../node_modules/react-date-picker/dist/DatePicker.css';
+@import '../../node_modules/react-calendar/dist/Calendar.css';
 
 
 
@@ -68,18 +68,7 @@ html, body, #root {
         gap: theme(gap.2);
         padding: theme(padding.2) 0 theme(padding.2) 0;
     }
-
-    .add-btn, .action-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: theme(gap.2);
-        border-radius: theme(borderRadius.full);
-        padding: theme(padding.2) theme(padding.4) theme(padding.2) theme(padding.4);
-        border: 1px solid theme(colors.orange-300);
-        color: theme(colors.orange-300);
-    }
-
+    
     .auth-input {
         background-color: theme(colors.grey-300);
         border-radius: theme(borderRadius.md);
@@ -114,11 +103,6 @@ html, body, #root {
 
     .nav-link:hover {
         background-color: theme(colors.orange-200);
-    }
-
-    .add-btn:hover {
-        background-color: theme(colors.orange-300);
-        color: theme(colors.white);
     }
 
     .action-btn:hover {

@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import ProjectCard from "../../../components/home/ProjectCard";
+import ProjectTab from "./ProjectTab";
 import AuthContext from "../../../context/AuthContext";
 
 function ProjectGallery() {
@@ -16,7 +16,7 @@ function ProjectGallery() {
     <section className="flex items-center gap-4 overflow-x-scroll scroll-smooth w-full">
       {projects && (
         projects.map((project) => (
-          <ProjectCard
+          <ProjectTab
             key={project.id}
             project={project}
           />

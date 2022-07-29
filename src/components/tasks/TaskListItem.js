@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import Proptypes from "prop-types";
 import { CalendarIcon } from "@heroicons/react/outline";
+import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
-function TaskCard({ task, setTasks }) {
+function TaskListItem({ task, setTasks }) {
   const auth = useContext(AuthContext);
-
   const deleteHandler = async () => {
     try {
       await fetch(`http://localhost:4000/tasks/${task.id}`, {
@@ -38,7 +37,7 @@ function TaskCard({ task, setTasks }) {
   );
 }
 
-TaskCard.propTypes = {
+TaskListItem.propTypes = {
   task: Proptypes.shape({
     id: Proptypes.string.isRequired,
     title: Proptypes.string.isRequired,
@@ -47,4 +46,4 @@ TaskCard.propTypes = {
   setTasks: Proptypes.func.isRequired,
 };
 
-export default TaskCard;
+export default TaskListItem;

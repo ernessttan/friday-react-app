@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Input from "../../components/Forms/Input";
+import SubmitButton from "../../components/Buttons/SubmitButton";
 
 function Login() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ function Login() {
           handleChange={handleChange}
           name="email"
           type="email"
+          label="Email"
           value={loginInfo.email}
           placeholder="Email"
           className="auth-input"
@@ -60,15 +62,14 @@ function Login() {
           handleChange={handleChange}
           name="password"
           type="password"
+          label="Password"
           value={loginInfo.password}
           placeholder="Password"
           className="auth-input"
           errorMessage="Please enter a valid password"
           required
         />
-        <button type="submit" className="action-btn w-full my-3">
-          Login
-        </button>
+        <SubmitButton name="Login" />
       </form>
     </main>
   );

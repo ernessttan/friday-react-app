@@ -1,10 +1,11 @@
-import Modal from "react-modal";
-import Proptypes from "prop-types";
 import { useContext, useState } from "react";
-import { XIcon } from "@heroicons/react/solid";
+import Proptypes from "prop-types";
 import AuthContext from "../../context/AuthContext";
+import Modal from "../Modal";
+import Input from "../Forms/Input";
+import AddButton from "../Buttons/SubmitButton";
 
-function CreateProjectModal({ modalIsOpen, toggleModal, setProjects }) {
+function CreateProject({ toggleModal, modalIsOpen, setProjects }) {
   const auth = useContext(AuthContext);
   const [newProject, setNewProject] = useState({
     title: "",
@@ -37,38 +38,18 @@ function CreateProjectModal({ modalIsOpen, toggleModal, setProjects }) {
       console.log(error);
     }
   };
-
   return (
-    <Modal
-      isOpen={modalIsOpen}
-      ariaHideApp={false}
-      style={{
-        content: {
-          position: "absolute",
-          borderRadius: "20px",
-          paddingLeft: "25px",
-          paddingRight: "25px",
-          zIndex: "5",
-        },
-      }}
-    >
+    <Modal isOpen={modalIsOpen} toggleModal={toggleModal}>
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-end mb-5">
-          <button
-            onClick={toggleModal}
-            type="button"
-            className="h-5 w-5 text-orange-400"
-          >
-            <XIcon />
-          </button>
-        </div>
-        <input
+        <Input
           className="w-full placeholder:text-grey-500 text-black-500 font-semibold text-3xl"
           type="text"
           name="title"
           onChange={handleChange}
           value={newProject.title}
           placeholder="Untitled"
+          errorMessage="Please enter a title"
+          required
         />
         <textarea
           className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 my-5 py-3"
@@ -78,19 +59,20 @@ function CreateProjectModal({ modalIsOpen, toggleModal, setProjects }) {
           onChange={handleChange}
         />
         <div className="flex justify-end">
-          <button type="submit" className="add-btn extend">
-            Add Task
-          </button>
+          <AddButton
+            name="Add Project"
+            extend
+          />
         </div>
       </form>
     </Modal>
   );
 }
 
-CreateProjectModal.propTypes = {
+CreateProject.propTypes = {
   modalIsOpen: Proptypes.bool.isRequired,
   toggleModal: Proptypes.func.isRequired,
   setProjects: Proptypes.func.isRequired,
 };
 
-export default CreateProjectModal;
+export default CreateProject;

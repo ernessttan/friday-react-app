@@ -33,16 +33,18 @@ function Input({
 // Default props for required
 Input.defaultProps = {
   required: false,
+  label: "",
+  handleChange: () => {},
 };
 
 Input.propTypes = {
   type: Proptypes.string.isRequired,
   name: Proptypes.string.isRequired,
-  handleChange: Proptypes.func.isRequired,
+  handleChange: Proptypes.func,
   value: Proptypes.string.isRequired,
   placeholder: Proptypes.string.isRequired,
   className: Proptypes.string.isRequired,
-  label: Proptypes.string.isRequired,
+  label: Proptypes.string,
   errorMessage: Proptypes.string.isRequired,
   required: Proptypes.bool,
 };

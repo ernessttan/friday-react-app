@@ -8,13 +8,12 @@ function App() {
     login, logout, token, userId,
   } = useAuth();
 
-  
   // Lazy Load Pages for code splitting
   const Welcome = lazy(() => import("./pages/Authentication/Welcome"));
   const Signup = lazy(() => import("./pages/Authentication/Signup"));
   const Login = lazy(() => import("./pages/Authentication/Login"));
   const Home = lazy(() => import("./pages/Home/Home"));
-  const Projects = lazy(() => import("./pages/Project/Project"));
+  const Project = lazy(() => import("./pages/Project/Project"));
   const Tasks = lazy(() => import("./pages/Tasks/Tasks"));
 
   return (
@@ -33,7 +32,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
+              <Route path="/project/:id" element={<Project />} />
               <Route path="/tasks" element={<Tasks />} />
             </Routes>
           </div>

@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/Buttons/Button";
 
 function Welcome() {
+  const navigate = useNavigate();
+
   return (
     <main className="container mx-auto max-w-lg">
       <h1 className="text-orange-500 mt-[20vh]">
@@ -11,12 +14,23 @@ function Welcome() {
       <p className="text-xl my-3 mb-6">
         A task management app to help you get stuff done faster
       </p>
-      <Link to="/signup" type="button" className="action-btn w-full my-3">
-        Sign Up
-      </Link>
-      <Link to="/login" type="button" className="action-btn w-full my-3">
-        Login
-      </Link>
+      <div className="flex flex-col gap-3">
+        <Button
+          handleClick={() => navigate("/signup")}
+          type="button"
+          fullWidth
+        >
+          Sign Up
+        </Button>
+        <Button
+          handleClick={() => navigate("/login")}
+          type="button"
+          fullWidth
+        >
+          Login
+        </Button>
+      </div>
+
     </main>
   );
 }

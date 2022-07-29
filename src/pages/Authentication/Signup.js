@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Forms/Input";
+import SubmitButton from "../../components/Buttons/SubmitButton";
 
 function Signup() {
   const navigate = useNavigate();
@@ -69,9 +70,9 @@ function Signup() {
           errorMessage="Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!"
           required
         />
-        <button type="submit" className="action-btn w-full my-3">
-          Sign Up
-        </button>
+        <SubmitButton
+          name="Sign Up"
+        />
       </form>
     </main>
   );

@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import Proptypes from "prop-types";
 import AuthContext from "../../context/AuthContext";
 import Modal from "../Modal";
 import AddProject from "./AddProject";
 import AddDate from "./AddDate";
+import SubmitButton from "../Buttons/SubmitButton";
 
 function AddTask({ modalIsOpen, toggleModal }) {
   const auth = useContext(AuthContext);
@@ -35,6 +37,7 @@ function AddTask({ modalIsOpen, toggleModal }) {
         body: JSON.stringify(newTask),
       }).then((res) => res.json())
         .then((taskData) => {
+          console.log(taskData);
           toggleModal();
         });
     } catch (error) {
@@ -65,9 +68,9 @@ function AddTask({ modalIsOpen, toggleModal }) {
           onChange={handleChange}
         />
         <div className="flex justify-end">
-          <button type="submit" className="add-btn extend">
-            Add Task
-          </button>
+          <SubmitButton
+            name="Submit Task"
+          />
         </div>
       </form>
     </Modal>

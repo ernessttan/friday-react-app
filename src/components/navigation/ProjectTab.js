@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
 import { DotsHorizontalIcon, PencilIcon, TrashIcon } from "@heroicons/react/solid";
+import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 function ProjectTab({ project, setProjects }) {
@@ -27,7 +28,9 @@ function ProjectTab({ project, setProjects }) {
 
   return (
     <div className="relative flex items-center justify-between text-white">
-      <p>{project.title}</p>
+      <Link to={`/project/${project.id}`} className="grow">
+        {project.title}
+      </Link>
       <button type="button" onClick={toggleOptions} className="relative">
         <DotsHorizontalIcon className="h-5 w-5" />
       </button>

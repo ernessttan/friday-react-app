@@ -14,8 +14,8 @@ function Modal({
         content: {
           position: "absolute",
           borderRadius: "20px",
-          paddingLeft: "15px",
-          paddingRight: "15px",
+          paddingLeft: "20px",
+          paddingRight: "20px",
           zIndex: "5",
         },
       }}

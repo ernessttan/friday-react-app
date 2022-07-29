@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { MenuIcon } from "@heroicons/react/solid";
-import { PlusIcon } from "@heroicons/react/outline";
+import { MenuIcon, PlusIcon } from "@heroicons/react/solid";
 import Navbar from "./Navigation/Navbar";
-import AddTask from "./addtask/AddTask";
+import AddTask from "./Tasks/AddTask";
+import Button from "./Buttons/Button";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,14 +21,12 @@ function Header() {
       >
         <MenuIcon />
       </button>
-      <button
-        onClick={toggleModal}
-        className="add-btn"
-        type="button"
+      <Button
+        handleClick={toggleModal}
+        name="New Task"
       >
         <PlusIcon className="h-5 w-5" />
-        Add Task
-      </button>
+      </Button>
       <Navbar
         isOpen={isOpen}
         toggleNav={toggleNav}
