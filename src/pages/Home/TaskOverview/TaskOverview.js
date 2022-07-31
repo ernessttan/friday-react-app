@@ -9,7 +9,8 @@ function TaskOverview({ tasks }) {
         <div>
           <h3 className="text-white mb-3">Today</h3>
           <h2 className="text-white font-bold">
-            2/
+            {tasks.filter((task) => task.status === "Done").length}
+            /
             {tasks.length}
             {" "}
             Tasks Completed

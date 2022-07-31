@@ -1,22 +1,41 @@
 import { DragDropContext } from "react-beautiful-dnd";
 import Proptypes from "prop-types";
+import { useContext } from "react";
 import StatusColumn from "./StatusColumn";
 import TaskBoardItem from "./TaskBoardItem";
+import AuthContext from "../../context/AuthContext";
 
 function TaskBoard({ tasks, setTasks }) {
+  const auth = useContext(AuthContext);
   const STATUS_DATA = [
     { id: 0, title: "To Do", color: "bg-red-100" },
     { id: 1, title: "In Progress", color: "bg-yellow-100" },
     { id: 2, title: "Done", color: "bg-green-100" }];
 
-  const updateStatus = (currentTask, newStatus) => {
-    setTasks((prevTasks) => prevTasks.map((task) => ({
-      ...task,
-      status: task.title === currentTask.title ? newStatus : task.status,
-    })));
+  const updateStatus = async (currentTask, newStatus) => {
+    try {
+      await fetch(`http://localhost:4000/tasks/${currentTask.id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...currentTask, status: newStatus }),
+      }).then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setTasks((prevTasks) => prevTasks.map((task) => ({
+            ...task,
+            status: task.title === currentTask.title ? newStatus : task.status,
+          })));
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const onDragEnd = (result) => {
+    console.log("End");
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -29,7 +48,7 @@ function TaskBoard({ tasks, setTasks }) {
     }
 
     // Update status
-    const currentTask = tasks.find((task) => task.title === draggableId);
+    const currentTask = tasks.find((task) => task.id === draggableId);
     const newStatus = STATUS_DATA.find((status) => status.title === destination.droppableId).title;
     updateStatus(currentTask, newStatus);
   };

@@ -40,8 +40,6 @@ function EditTask({
     }
   };
 
-  console.log(editedTask);
-
   return (
     <Modal isOpen={modalIsOpen} toggleModal={toggleModal}>
       <form onSubmit={handleSubmit}>

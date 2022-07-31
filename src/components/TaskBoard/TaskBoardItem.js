@@ -1,5 +1,5 @@
-import { Draggable } from "react-beautiful-dnd";
 import Proptypes from "prop-types";
+import { Draggable } from "react-beautiful-dnd";
 import { CalendarIcon } from "@heroicons/react/outline";
 import { DotsHorizontalIcon } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
@@ -26,10 +26,9 @@ function TaskBoardItem({ id, index }) {
 
   return task && (
     <>
-      <Draggable draggableId={task.title} index={index}>
+      <Draggable draggableId={task.id} index={index}>
         {(provided, snapshot) => (
-          <button
-            type="button"
+          <div
             onClick={toggleModal}
             ref={provided.innerRef}
             {...provided.draggableProps}
@@ -45,7 +44,7 @@ function TaskBoardItem({ id, index }) {
               <CalendarIcon className="w-4 h-4" />
               {task.dueDate}
             </div>
-          </button>
+          </div>
         )}
       </Draggable>
       <EditTask

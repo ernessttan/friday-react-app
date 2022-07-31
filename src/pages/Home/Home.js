@@ -18,7 +18,7 @@ function Home() {
           .then((res) => res.json())
           .then((data) => {
             setTasks(data.tasks);
-            setTodaysTasks(data.tasks.filter((task) => task.dueDate === format(new Date(), "MM-dd-yyyy")));
+            setTodaysTasks(data.tasks.filter((task) => task.dueDate === format(new Date(), "MM/dd/yyyy")));
           });
       } catch (error) {
         console.log(error);
