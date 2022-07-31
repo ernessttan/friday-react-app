@@ -4,7 +4,7 @@ import { DotsHorizontalIcon, PencilIcon, TrashIcon } from "@heroicons/react/soli
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
-function ProjectTab({ project, setProjects }) {
+function ProjectTab({ fetchProjects, project }) {
   const auth = useContext(AuthContext);
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const toggleOptions = () => {
@@ -20,7 +20,7 @@ function ProjectTab({ project, setProjects }) {
           Authorization: `Bearer ${auth.token}`,
         },
       })
-        .then(() => setProjects((prevProjects) => prevProjects.filter((p) => p.id !== project.id)));
+        .then(() => fetchProjects());
     } catch (err) {
       console.error(err);
     }
@@ -62,7 +62,7 @@ ProjectTab.propTypes = {
     title: PropTypes.string.isRequired,
     tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
-  setProjects: PropTypes.func.isRequired,
+  fetchProjects: PropTypes.func.isRequired,
 };
 
 export default ProjectTab;

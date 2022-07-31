@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MenuIcon, PlusIcon } from "@heroicons/react/solid";
 import Navbar from "./Navigation/Navbar";
-import AddTask from "./Tasks/AddTask";
+import AddTask from "./Task/AddTask";
 import Button from "./Buttons/Button";
 
 function Header() {

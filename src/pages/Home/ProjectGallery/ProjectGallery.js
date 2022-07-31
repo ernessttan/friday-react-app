@@ -7,22 +7,33 @@ function ProjectGallery() {
   const [projects, setProjects] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/user/${auth.userId}`)
-      .then((res) => res.json())
-      .then((data) => setProjects(data.projects));
+    const fetchProjects = async () => {
+      try {
+        fetch(`https://friday-productivity.herokuapp.com/projects/user/${auth.userId}`)
+          .then((res) => res.json())
+          .then((data) => setProjects(data.projects));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProjects();
   }, []);
 
   return (
-    <section className="flex items-center gap-4 overflow-x-scroll scroll-smooth w-full">
-      {projects && (
-        projects.map((project) => (
-          <ProjectTab
-            key={project.id}
-            project={project}
-          />
-        ))
-      )}
-    </section>
+    <>
+      <h3 className="text-black font-bold">Projects</h3>
+      <section className="flex items-center gap-4 overflow-x-scroll scroll-smooth w-full">
+        {projects && (
+          projects.map((project) => (
+            <ProjectTab
+              key={project.id}
+              project={project}
+            />
+          ))
+        )}
+      </section>
+    </>
+
   );
 }
 

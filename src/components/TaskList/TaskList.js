@@ -4,7 +4,7 @@ import TaskListItem from "./TaskListItem";
 function TaskList({ tasks, setTasks }) {
   return (
     <section>
-      <div className="flex flex-col gap-4 overflow-x-scroll scroll-smooth w-full">
+      <div className="flex flex-col gap-4 overflow-y-scroll scroll-smooth w-full">
         {tasks && (
           tasks.map((task) => (
             <TaskListItem

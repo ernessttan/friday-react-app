@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import Proptypes from "prop-types";
 import AuthContext from "../../context/AuthContext";
@@ -5,7 +6,9 @@ import Modal from "../Modal";
 import Input from "../Forms/Input";
 import AddButton from "../Buttons/SubmitButton";
 
-function CreateProject({ toggleModal, modalIsOpen, setProjects }) {
+function CreateProject({
+  toggleModal, modalIsOpen, fetchProjects,
+}) {
   const auth = useContext(AuthContext);
   const [newProject, setNewProject] = useState({
     title: "",
@@ -23,7 +26,7 @@ function CreateProject({ toggleModal, modalIsOpen, setProjects }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await fetch("http://localhost:4000/projects", {
+      await fetch("https://friday-productivity.herokuapp.com/projects", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -31,13 +34,19 @@ function CreateProject({ toggleModal, modalIsOpen, setProjects }) {
         },
         body: JSON.stringify(newProject),
       }).then(() => {
-        setProjects((prevProjects) => [...prevProjects, newProject]);
+        setNewProject({
+          title: "",
+          description: "",
+          userId: auth.userId,
+        });
+        fetchProjects();
         toggleModal();
       });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
+
   return (
     <Modal isOpen={modalIsOpen} toggleModal={toggleModal}>
       <form onSubmit={handleSubmit}>
@@ -72,7 +81,7 @@ function CreateProject({ toggleModal, modalIsOpen, setProjects }) {
 CreateProject.propTypes = {
   modalIsOpen: Proptypes.bool.isRequired,
   toggleModal: Proptypes.func.isRequired,
-  setProjects: Proptypes.func.isRequired,
+  fetchProjects: Proptypes.func.isRequired,
 };
 
 export default CreateProject;

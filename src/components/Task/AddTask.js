@@ -5,9 +5,10 @@ import AuthContext from "../../context/AuthContext";
 import Modal from "../Modal";
 import AddProject from "./AddProject";
 import AddDate from "./AddDate";
+import AddStatus from "./AddStatus";
 import SubmitButton from "../Buttons/SubmitButton";
 
-function AddTask({ modalIsOpen, toggleModal }) {
+function AddTask({ modalIsOpen, toggleModal, status }) {
   const auth = useContext(AuthContext);
   const [newTask, setNewTask] = useState({
     title: "",
@@ -15,6 +16,7 @@ function AddTask({ modalIsOpen, toggleModal }) {
     projectId: "",
     dueDate: "",
     completed: false,
+    status: `${status}`,
     userId: auth.userId,
   });
 
@@ -28,7 +30,7 @@ function AddTask({ modalIsOpen, toggleModal }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await fetch("http://localhost:4000/tasks", {
+      await fetch("https://friday-productivity.herokuapp.com/tasks", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -37,7 +39,6 @@ function AddTask({ modalIsOpen, toggleModal }) {
         body: JSON.stringify(newTask),
       }).then((res) => res.json())
         .then((taskData) => {
-          console.log(taskData);
           toggleModal();
         });
     } catch (error) {
@@ -58,7 +59,8 @@ function AddTask({ modalIsOpen, toggleModal }) {
         />
         <div className="my-5">
           <AddProject setNewTask={setNewTask} />
-          <AddDate setNewTask={setNewTask} />
+          <AddDate setNewTask={setNewTask} dueDate="mm/dd/yyyy" />
+          <AddStatus newTask={newTask} setNewTask={setNewTask} />
         </div>
         <textarea
           className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 py-3"
@@ -77,9 +79,14 @@ function AddTask({ modalIsOpen, toggleModal }) {
   );
 }
 
+AddTask.defaultProps = {
+  status: "To Do",
+};
+
 AddTask.propTypes = {
   modalIsOpen: Proptypes.bool.isRequired,
   toggleModal: Proptypes.func.isRequired,
+  status: Proptypes.string,
 };
 
 export default AddTask;

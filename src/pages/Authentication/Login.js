@@ -8,6 +8,7 @@ import SubmitButton from "../../components/Buttons/SubmitButton";
 function Login() {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -23,7 +24,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:4000/users/login", {
+      await fetch("https://friday-productivity.herokuapp.com/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,12 +36,13 @@ function Login() {
           navigate("/home");
         });
     } catch (error) {
-      console.log(error);
+      setErrorMessage(error.message);
     }
   };
 
   return (
     <main>
+      <h1>{errorMessage}</h1>
       <h1 className="text-orange-500 mt-[15vh]">
         <span className="text-black">Welcome Back</span>
         <br />

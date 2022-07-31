@@ -1,19 +1,28 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState, useContext } from "react";
 import { ChevronRightIcon } from "@heroicons/react/solid";
+import Proptypes from "prop-types";
 import ProjectTab from "./ProjectTab";
 import CreateProjectButton from "./CreateProjectButton";
 import AuthContext from "../../context/AuthContext";
 
-function ProjectsMenu() {
+function ProjectsMenu({ toggleNav }) {
   const auth = useContext(AuthContext);
-  const [projects, setProjects] = useState();
+  const [projects, setProjects] = useState([]);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
+  const fetchProjects = async () => {
+    try {
+      await fetch(`https://friday-productivity.herokuapp.com/projects/user/${auth.userId}`)
+        .then((res) => res.json())
+        .then((data) => setProjects(data.projects));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   useEffect(() => {
-    fetch(`http://localhost:4000/projects/user/${auth.userId}`)
-      .then((res) => res.json())
-      .then((data) => setProjects(data.projects));
+    fetchProjects();
   }, []);
 
   const toggleProjects = () => {
@@ -32,18 +41,23 @@ function ProjectsMenu() {
       </div>
       <div className={`${isProjectsOpen ? "flex" : "hidden"} w-full flex-col gap-3 my-5`}>
         <CreateProjectButton
-          setProjects={setProjects}
+          toggleNav={toggleNav}
+          fetchProjects={fetchProjects}
         />
         {projects && projects.map((project) => (
           <ProjectTab
             key={project.id}
             project={project}
-            setProjects={setProjects}
+            fetchProjects={fetchProjects}
           />
         ))}
       </div>
     </>
   );
 }
+
+ProjectsMenu.propTypes = {
+  toggleNav: Proptypes.func.isRequired,
+};
 
 export default ProjectsMenu;

@@ -22,7 +22,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:4000/users/signup", {
+      await fetch("https://friday-productivity.herokuapp.com/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

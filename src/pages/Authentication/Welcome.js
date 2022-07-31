@@ -18,17 +18,15 @@ function Welcome() {
         <Button
           handleClick={() => navigate("/signup")}
           type="button"
+          name="Sign Up"
           fullWidth
-        >
-          Sign Up
-        </Button>
+        />
         <Button
           handleClick={() => navigate("/login")}
           type="button"
+          name="Log In"
           fullWidth
-        >
-          Login
-        </Button>
+        />
       </div>
 
     </main>

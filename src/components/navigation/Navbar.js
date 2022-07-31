@@ -37,7 +37,9 @@ function Navbar({ isOpen, toggleNav }) {
           <Link to="/tasks">Tasks</Link>
         </li>
       </ul>
-      <ProjectsMenu />
+      <ProjectsMenu
+        toggleNav={toggleNav}
+      />
       <div className="absolute bottom-0 right-0 p-3">
         <button className="font-bold text-white" onClick={handleLogOut} type="button">
           Logout

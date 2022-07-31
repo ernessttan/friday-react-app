@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
-import TaskList from "../../components/Tasks/TaskList";
+import TaskList from "../../components/TaskList/TaskList";
 import Header from "../../components/Header";
 
 function Tasks() {
@@ -12,7 +12,7 @@ function Tasks() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        await fetch(`http://localhost:4000/tasks/user/${auth.userId}`)
+        await fetch(`https://friday-productivity.herokuapp.com/tasks/user/${auth.userId}`)
           .then((res) => res.json())
           .then((data) => setTasks(data.tasks));
       } catch (error) {
