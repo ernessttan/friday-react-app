@@ -43,7 +43,10 @@ function Project() {
       <Header />
       <main>
         <div className="flex items-center justify-between mb-5">
-          <h1 className="text-orange-500">{project.title}</h1>
+          <div>
+            <h1 className="text-orange-500">{project.title}</h1>
+            <h2 className="align-left font-normal">{project.description}</h2>
+          </div>
           {/* View Menu */}
           <div className="relative">
             <button onClick={toggleView} type="button" className="text-black flex items-center">

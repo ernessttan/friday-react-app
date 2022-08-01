@@ -6,7 +6,7 @@ function ToDo({ tasks }) {
     <section>
       <h2>To Do</h2>
       <TaskList
-        tasks={tasks.filter((task) => task.status === "To Do")}
+        tasks={tasks.filter((task) => task.status === "To Do" || task.status === "In Progress")}
       />
     </section>
   );
