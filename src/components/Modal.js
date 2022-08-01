@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import ReactModal from "react-modal";
 import Proptypes from "prop-types";
 import { XIcon, DotsHorizontalIcon } from "@heroicons/react/solid";
@@ -10,15 +11,7 @@ function Modal({
     <ReactModal
       isOpen={isOpen}
       ariaHideApp={false}
-      style={{
-        content: {
-          position: "absolute",
-          borderRadius: "20px",
-          paddingLeft: "20px",
-          paddingRight: "20px",
-          zIndex: "5",
-        },
-      }}
+      className="mx-5 max-w-2xl md:mx-auto mt-16 p-4 rounded-lg shadow-xl z-10 bg-white border border-grey-300 md:p-8"
     >
       <div className="flex gap-3 justify-end mb-5">
         {

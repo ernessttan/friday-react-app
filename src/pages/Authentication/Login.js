@@ -30,25 +30,30 @@ function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(loginInfo),
-      }).then((res) => res.json())
-        .then((userData) => {
-          auth.login(userData.userId, userData.token);
-          navigate("/home");
-        });
+      }).then((res) => {
+        if (res.status === 200) {
+          res.json().then((data) => {
+            auth.login(data.firstName, data.userId, data.token);
+            navigate("/home");
+          });
+        } else {
+          setErrorMessage("Invalid email or password");
+        }
+      });
     } catch (error) {
       setErrorMessage(error.message);
     }
   };
 
   return (
-    <main>
-      <h1>{errorMessage}</h1>
+    <main className="container mx-auto max-w-lg">
       <h1 className="text-orange-500 mt-[15vh]">
         <span className="text-black">Welcome Back</span>
         <br />
         Let's go!
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 my-5">
+        <div className="error-msg">{errorMessage}</div>
         <Input
           handleChange={handleChange}
           name="email"

@@ -12,10 +12,13 @@ html, body, #root {
     main {
         flex-grow: 1;
         padding: theme(padding.2) 0 theme(padding.2) 0;
+        display: flex;
+        flex-direction: column;
     }
 
     section {
         padding: theme(padding.3) 0 theme(padding.3) 0;
+        margin: theme(margin.2) 0 theme(margin.2) 0;
     }
 
     h1 {
@@ -23,14 +26,26 @@ html, body, #root {
         font-weight: theme(fontWeight.bold);
     }
 
+    h1.desktop {
+        font-size: theme(fontSize.4xl);
+    }
+
     h2 {
         font-size: theme(fontSize.2xl);
         font-weight: theme(fontWeight.semibold);
     }
 
+    h2.desktop {
+        font-size: theme(fontSize.3xl);
+    }
+
     h3 {
         font-size: theme(fontSize.xl);
         font-weight: theme(fontWeight.semibold);
+    }
+
+    h3.desktop {
+        font-size: theme(fontSize.2xl);
     }
 
 }
@@ -50,6 +65,7 @@ html, body, #root {
         align-items: center;
         gap: theme(gap.2);
         padding: theme(padding.2) 0 theme(padding.2) 0;
+        border-radius: theme(borderRadius.md);
     }
     
     .auth-input {
@@ -88,6 +104,16 @@ html, body, #root {
 }
 
 @layer utilities {
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .no-scrollbar {
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
+    }
+      
     .greyout {
         opacity: .5;
         transition: opacity 300ms ease-in-out;

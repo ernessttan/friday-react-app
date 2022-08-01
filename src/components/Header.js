@@ -13,7 +13,7 @@ function Header() {
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
   return (
-    <header className="py-3 flex justify-between">
+    <header className="py-3 flex justify-between sticky top-0 bg-white">
       <button
         onClick={toggleNav}
         type="button"

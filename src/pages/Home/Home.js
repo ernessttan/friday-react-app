@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import format from "date-fns/format";
 import AuthContext from "../../context/AuthContext";
 import TaskOverview from "./TaskOverview/TaskOverview";
 import ProjectGallery from "./ProjectGallery/ProjectGallery";
@@ -8,7 +7,6 @@ import TaskBoard from "../../components/TaskBoard/TaskBoard";
 
 function Home() {
   const auth = useContext(AuthContext);
-  const [todaysTasks, setTodaysTasks] = useState([]);
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -18,7 +16,6 @@ function Home() {
           .then((res) => res.json())
           .then((data) => {
             setTasks(data.tasks);
-            setTodaysTasks(data.tasks.filter((task) => task.dueDate === format(new Date(), "MM/dd/yyyy")));
           });
       } catch (error) {
         console.log(error);
@@ -33,11 +30,17 @@ function Home() {
       {
       tasks && (
         <main>
-          <h1 className="text-black">Hello, Madeline</h1>
-          <TaskOverview tasks={todaysTasks} />
+          <h1 className="text-black">
+            Hello,
+            {" "}
+            {auth.firstName}
+          </h1>
+          <TaskOverview tasks={tasks} />
           <ProjectGallery />
-          <h3 className="text-black font-bold mb-6">Tasks</h3>
-          <TaskBoard tasks={tasks} setTasks={setTasks} />
+          <section>
+            <h2 className="text-black font-bold mb-6">Tasks</h2>
+            <TaskBoard tasks={tasks} setTasks={setTasks} />
+          </section>
         </main>
       )
     }

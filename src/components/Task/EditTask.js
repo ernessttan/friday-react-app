@@ -23,7 +23,7 @@ function EditTask({
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await fetch(`http://localhost:4000/tasks/${task.id}`, {
+      await fetch(`https://friday-productivity.herokuapp.com/tasks/${task.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -36,7 +36,7 @@ function EditTask({
           toggleModal();
         });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 

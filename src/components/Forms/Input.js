@@ -22,7 +22,6 @@ function Input({
         onBlur={handleFocus}
         value={value}
         className={className}
-        autoComplete="on"
         {...inputProps}
       />
       <span className={`${focused ? "block" : "hidden"} error-msg`}>{errorMessage}</span>

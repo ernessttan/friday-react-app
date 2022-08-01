@@ -47,7 +47,7 @@ function ProjectsMenu({ toggleNav }) {
         {projects && projects.map((project) => (
           <ProjectTab
             key={project.id}
-            project={project}
+            projectData={project}
             fetchProjects={fetchProjects}
           />
         ))}

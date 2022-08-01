@@ -39,7 +39,7 @@ function AddTask({ modalIsOpen, toggleModal, status }) {
         body: JSON.stringify(newTask),
       }).then((res) => res.json())
         .then((taskData) => {
-          toggleModal();
+          window.location.reload();
         });
     } catch (error) {
       console.log(error);
@@ -63,7 +63,7 @@ function AddTask({ modalIsOpen, toggleModal, status }) {
           <AddStatus newTask={newTask} setNewTask={setNewTask} />
         </div>
         <textarea
-          className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 py-3"
+          className="placeholder:text-grey-500 text-black-500 font-normal text-xl w-full h-60 py-3 px-2 rounded-md hover:bg-grey-200"
           placeholder="Description"
           name="description"
           value={newTask.description}

@@ -37,9 +37,9 @@ function AddProject({ setNewTask, title }) {
 
   return (
     <div className="flex items-center gap-3 my-2">
-      <div className="flex items-center gap-2 w-1/3">
-        <BriefcaseIcon className="h-5 w-5 text-grey-500" />
-        <p className="text-grey-500">Project</p>
+      <div className="flex items-center gap-2 w-1/3 text-black">
+        <BriefcaseIcon className="h-5 w-5" />
+        <p>Project</p>
       </div>
       <div className="relative inline-block text-left w-2/3 px-4">
         <div>
@@ -49,12 +49,12 @@ function AddProject({ setNewTask, title }) {
         </div>
         <div
           id="projectMenu"
-          className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg border border-grey-300 bg-white z-40 ${
+          className={`absolute mt-2 rounded-md shadow-lg border border-grey-300 bg-white z-40 w-full ${
             isProjectsOpen ? "" : "hidden"
           }`}
         >
           <div className="p-5 flex flex-col gap-2">
-            { projects && (
+            { projects && projects.length > 0 ? (
               projects.map((project) => (
                 <button
                   key={project.id}
@@ -67,6 +67,8 @@ function AddProject({ setNewTask, title }) {
                   {project.title}
                 </button>
               ))
+            ) : (
+              <p className="text-grey-500">No Projects Created</p>
             )}
           </div>
         </div>

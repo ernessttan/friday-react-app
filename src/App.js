@@ -5,7 +5,7 @@ import useAuth from "./hooks/useAuth";
 
 function App() {
   const {
-    login, logout, token, userId,
+    login, logout, token, userId, firstName,
   } = useAuth();
 
   // Lazy Load Pages for code splitting
@@ -22,11 +22,12 @@ function App() {
       logout,
       token,
       userId,
+      firstName,
     }}
     >
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
-          <div id="app" className="container max-w-3xl h-screen flex flex-col p-3 px-5">
+          <div id="app" className="container mx-auto h-screen flex flex-col p-3 px-5 sm:px-10 md:px-14">
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/signup" element={<Signup />} />

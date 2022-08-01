@@ -20,9 +20,9 @@ function ProjectGallery() {
   }, []);
 
   return (
-    <>
-      <h3 className="text-black font-bold">Projects</h3>
-      <section className="flex items-center gap-4 overflow-x-scroll scroll-smooth w-full">
+    <section>
+      <h2 className="text-black font-bold mb-3">Projects</h2>
+      <div className="py-3 flex items-center gap-4 overflow-x-scroll scroll-smooth w-full md:no-scrollbar">
         {projects && (
           projects.map((project) => (
             <ProjectTab
@@ -31,8 +31,8 @@ function ProjectGallery() {
             />
           ))
         )}
-      </section>
-    </>
+      </div>
+    </section>
 
   );
 }

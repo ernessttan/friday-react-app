@@ -1,16 +1,20 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Forms/Input";
 import SubmitButton from "../../components/Buttons/SubmitButton";
+import AuthContext from "../../context/AuthContext";
 
 function Signup() {
+  const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const [signUpInfo, setSignUpInfo] = useState({
+    firstName: "",
     email: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setSignUpInfo({
@@ -29,24 +33,41 @@ function Signup() {
         },
         body: JSON.stringify(signUpInfo),
       })
-        .then((res) => res.json())
-        .then((userData) => {
-          localStorage.setItem("token", userData.token);
-          navigate("/home");
+        .then((res) => {
+          if (res.status === 201) {
+            res.json().then((userData) => {
+              auth.login(userData.userId, userData.token);
+              navigate("/home");
+            });
+          } else {
+            setErrorMessage("Invalid email or password");
+          }
         });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
   return (
-    <main>
+    <main className="container mx-auto max-w-lg">
       <h1 className="text-orange-500 mt-[15vh]">
         <span className="text-black">Let's get</span>
         <br />
         Started.
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 my-5">
+        <div className="error-msg">{errorMessage}</div>
+        <Input
+          handleChange={handleChange}
+          name="firstName"
+          type="text"
+          value={signUpInfo.firstName}
+          placeholder="John"
+          className="auth-input"
+          label="First Name"
+          errorMessage="Please enter a your first name"
+          required
+        />
         <Input
           handleChange={handleChange}
           name="email"

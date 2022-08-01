@@ -1,25 +1,25 @@
 import { ClipboardListIcon } from "@heroicons/react/outline";
-import { Link } from "react-router-dom";
 import Proptypes from "prop-types";
+import format from "date-fns/format";
 
 function TaskOverview({ tasks }) {
   return (
     <section>
-      <Link to="/today" className="rounded-lg bg-orange-400 px-5 py-8 flex items-center justify-between">
+      <div className="rounded-lg bg-orange-400 px-5 py-8 flex items-center justify-between md:px-8 md:py-12">
         <div>
-          <h3 className="text-white mb-3">Today</h3>
-          <h2 className="text-white font-bold">
+          <h3 className="text-white mb-3 md:desktop">Today</h3>
+          <h3 className="text-white font-bold md:desktop">
             {tasks.filter((task) => task.status === "Done").length}
             /
-            {tasks.length}
+            {tasks.filter((task) => task.dueDate === format(new Date(), "MM/dd/yyyy")).length}
             {" "}
             Tasks Completed
-          </h2>
+          </h3>
         </div>
         <div>
           <ClipboardListIcon className="w-16 h-16 text-white" />
         </div>
-      </Link>
+      </div>
     </section>
   );
 }

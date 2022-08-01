@@ -7,6 +7,7 @@ import AuthContext from "../../context/AuthContext";
 
 function TaskBoard({ tasks, setTasks }) {
   const auth = useContext(AuthContext);
+  // TODO: Convert this to data stored on the database
   const STATUS_DATA = [
     { id: 0, title: "To Do", color: "bg-red-100" },
     { id: 1, title: "In Progress", color: "bg-yellow-100" },
@@ -14,7 +15,7 @@ function TaskBoard({ tasks, setTasks }) {
 
   const updateStatus = async (currentTask, newStatus) => {
     try {
-      await fetch(`http://localhost:4000/tasks/${currentTask.id}`, {
+      await fetch(`https://friday-productivity.herokuapp.com/tasks/${currentTask.id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${auth.token}`,
@@ -35,7 +36,6 @@ function TaskBoard({ tasks, setTasks }) {
   };
 
   const onDragEnd = (result) => {
-    console.log("End");
     const { destination, source, draggableId } = result;
 
     if (!destination) {
@@ -55,7 +55,7 @@ function TaskBoard({ tasks, setTasks }) {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex gap-5 overflow-x-scroll">
+      <div className="flex gap-5 overflow-x-scroll grow md:no-scrollbar">
         {STATUS_DATA.map((status) => (
           <StatusColumn
             key={status.id}

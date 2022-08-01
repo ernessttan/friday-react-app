@@ -17,7 +17,7 @@ function Navbar({ isOpen, toggleNav }) {
 
   return (
     <nav
-      className={`p-3 bg-orange-500 h-full fixed top-0 left-0 w-1/2 z-3 ease-in-out duration-500 ${
+      className={`p-3 bg-orange-500 h-full fixed top-0 left-0 w-1/2 z-3 ease-in-out duration-500 md:w-1/3 md:p-5 ${
         isOpen ? "-translate-x-0" : "-translate-x-full"
       }`}
     >
@@ -27,16 +27,16 @@ function Navbar({ isOpen, toggleNav }) {
         </button>
       </div>
       <h1 className="text-white">Friday</h1>
-      <ul className="my-8 flex flex-col gap-3">
-        <li className="nav-link">
+      <div className="my-8 flex flex-col gap-3">
+        <Link to="/home" className="nav-link">
           <HomeIcon className="nav-icon" />
-          <Link to="/home">Home</Link>
-        </li>
-        <li className="nav-link">
+          Home
+        </Link>
+        <Link to="/tasks" className="nav-link">
           <ClipboardListIcon className="nav-icon" />
-          <Link to="/tasks">Tasks</Link>
-        </li>
-      </ul>
+          Tasks
+        </Link>
+      </div>
       <ProjectsMenu
         toggleNav={toggleNav}
       />

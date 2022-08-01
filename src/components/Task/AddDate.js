@@ -20,14 +20,14 @@ function AddDate({ setNewTask, dueDate }) {
 
   return (
     <div className="flex items-center gap-3 my-2">
-      <div className="flex items-center gap-2 w-1/3">
-        <CalendarIcon className="h-5 w-5 text-grey-500" />
-        <p className="text-grey-500 text-sm">Due</p>
+      <div className="flex items-center gap-2 w-1/3 text-black">
+        <CalendarIcon className="h-5 w-5" />
+        <p>Due</p>
       </div>
-      <div className="w-2/3">
+      <div className="w-2/3 ml-6">
         <DatePicker
           wrapperClassName="w-full"
-          className="px-4 w-full text-grey-500"
+          className="placeholder:text-grey-500 py-2 w-full text-black rounded-md hover:bg-grey-200"
           calendarClassName="w-full"
           onChange={handleDateChange}
           selected={startDate}

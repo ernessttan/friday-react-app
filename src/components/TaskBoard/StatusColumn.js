@@ -16,7 +16,7 @@ function StatusColumn({ title, children, color }) {
         <div
           {...provided.droppableProps}
           ref={provided.innerRef}
-          className={`${snapshot.isDraggingOver ? "bg-grey-200" : "bg-grey-100"} rounded shrink-0 w-[90%] h-full p-3`}
+          className={`${snapshot.isDraggingOver ? "bg-grey-200" : "bg-grey-100"} rounded shrink-0 w-[90%] h-full p-3 sm:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[32%]`}
         >
           <h2 className={`${color} p-2 rounded mb-3 text-white font-bold`}>{title}</h2>
           <div className="flex flex-col gap-3">
