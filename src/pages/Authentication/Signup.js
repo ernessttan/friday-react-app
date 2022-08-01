@@ -36,7 +36,7 @@ function Signup() {
         .then((res) => {
           if (res.status === 201) {
             res.json().then((userData) => {
-              auth.login(userData.userId, userData.token);
+              auth.login(userData.firstName, userData.userId, userData.token);
               navigate("/home");
             });
           } else {
