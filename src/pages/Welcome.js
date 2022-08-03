@@ -34,7 +34,7 @@ function Welcome() {
   };
 
   return (
-    <main className="mt-32">
+    <main className="mt-32 rounded-md border-grey-300 md:border md:p-8 md:py-20 md:shadow-lg">
       <h1 className="text-orange-500">
         <span className="text-black">Introducing</span>
         <br />
