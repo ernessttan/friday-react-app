@@ -4,19 +4,18 @@ import AuthContext from '../context/AuthContext';
 import Input from '../components/forms/Input';
 import SubmitButton from '../components/buttons/SubmitButton';
 
-function Signup() {
+function Login() {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
-  const [signUpInfo, setSignUpInfo] = useState({
-    firstName: '',
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
   });
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
-    setSignUpInfo({
-      ...signUpInfo,
+    setLoginInfo({
+      ...loginInfo,
       [e.target.name]: e.target.value,
     });
   };
@@ -24,77 +23,64 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('https://friday-productivity.herokuapp.com/users/signup', {
+      await fetch('https://friday-productivity.herokuapp.com/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(signUpInfo),
+        body: JSON.stringify(loginInfo),
       }).then((res) => {
-        if (res.status === 201) {
-          res.json().then((userData) => {
-            auth.login(userData.firstName, userData.userId, userData.token);
+        if (res.status === 200) {
+          res.json().then((data) => {
+            auth.login(data.firstName, data.userId, data.token);
             navigate('/home');
           });
+        } else {
+          setErrorMessage('Invalid email or password');
         }
       });
     } catch (error) {
-      setErrorMessage('Invalid email or password');
+      setErrorMessage('Something went wrong, please try again');
     }
   };
 
   return (
     <main className="p-8 mt-32 rounded-md border-grey-300 md:border md:p-12 md:shadow-lg">
       <h1 className="text-orange-500">
-        <span className="text-black">Let&apos;s get</span>
+        <span className="text-black">Welcome Back</span>
         <br />
-        Started.
+        Let&apos;s go!
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 py-5">
+        <div className="error-msg">{errorMessage}</div>
         <label>
-          First Name
           <Input
-            name="firstName"
-            type="text"
-            value={signUpInfo.firstName}
-            placeholder="First Name"
-            className="w-full p-2 py-3 rounded-md bg-grey-300"
-            errorMessage="Please enter your first name"
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Email
-          <Input
+            handleChange={handleChange}
             name="email"
             type="email"
-            value={signUpInfo.email}
+            value={loginInfo.email}
             placeholder="Email"
             className="w-full p-2 py-3 rounded-md bg-grey-300"
             errorMessage="Please enter a valid email"
-            onChange={handleChange}
             required
           />
         </label>
         <label>
-          Password
           <Input
+            handleChange={handleChange}
             name="password"
             type="password"
-            value={signUpInfo.password}
+            value={loginInfo.password}
             placeholder="Password"
             className="w-full p-2 py-3 rounded-md bg-grey-300"
-            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$"
-            errorMessage="Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!"
-            onChange={handleChange}
+            errorMessage="Please enter a valid password"
             required
           />
         </label>
-        <SubmitButton className="py-3">Sign Up</SubmitButton>
+        <SubmitButton>Login</SubmitButton>
       </form>
     </main>
   );
 }
 
-export default Signup;
+export default Login;

@@ -9,6 +9,7 @@ function App() {
   // Lazy Load Pages for code splitting
   const Welcome = lazy(() => import('./pages/Welcome'));
   const Signup = lazy(() => import('./pages/Signup'));
+  const Login = lazy(() => import('./pages/Login'));
 
   return (
     <AuthContext.Provider
@@ -26,6 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </div>
         </Suspense>
