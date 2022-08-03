@@ -55,7 +55,7 @@ function Login() {
         <div className="error-msg">{errorMessage}</div>
         <label>
           <Input
-            handleChange={handleChange}
+            onChange={handleChange}
             name="email"
             type="email"
             value={loginInfo.email}
@@ -67,7 +67,7 @@ function Login() {
         </label>
         <label>
           <Input
-            handleChange={handleChange}
+            onChange={handleChange}
             name="password"
             type="password"
             value={loginInfo.password}

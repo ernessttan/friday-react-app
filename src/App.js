@@ -10,6 +10,7 @@ function App() {
   const Welcome = lazy(() => import('./pages/Welcome'));
   const Signup = lazy(() => import('./pages/Signup'));
   const Login = lazy(() => import('./pages/Login'));
+  const Home = lazy(() => import('./pages/Home'));
 
   return (
     <AuthContext.Provider
@@ -23,11 +24,12 @@ function App() {
     >
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
-          <div className="container max-w-xl mx-auto">
+          <div className="container max-w-xl p-5 mx-auto ">
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/home" element={<Home />} />
             </Routes>
           </div>
         </Suspense>
