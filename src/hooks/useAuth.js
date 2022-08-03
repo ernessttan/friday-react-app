@@ -18,7 +18,7 @@ function useAuth() {
         token,
       }),
     );
-  }, [token]);
+  }, []);
 
   // Triggered only when logged in
   useEffect(() => {

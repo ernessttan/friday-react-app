@@ -2,138 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-
-html, body, #root {
-    min-height: 100vh;
-    min-width: 100vw;
+html,
+body,
+#root {
+  min-height: 100vh;
+  min-width: 100vw;
+  font-family: Poppins, sans-serif;
 }
 
 @layer base {
-    main {
-        flex-grow: 1;
-        padding: theme(padding.2) 0 theme(padding.2) 0;
-        display: flex;
-        flex-direction: column;
-    }
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: theme('fontWeight.bold');
+  }
 
-    section {
-        padding: theme(padding.3) 0 theme(padding.3) 0;
-        margin: theme(margin.2) 0 theme(margin.2) 0;
-    }
+  h1 {
+    font-size: theme('fontSize.3xl');
+  }
 
-    h1 {
-        font-size: theme(fontSize.3xl);
-        font-weight: theme(fontWeight.bold);
-    }
+  h2 {
+    font-size: theme('fontSize.2xl');
+  }
 
-    h1.desktop {
-        font-size: theme(fontSize.4xl);
-    }
+  h3 {
+    font-size: theme('fontSize.xl');
+  }
 
-    h2 {
-        font-size: theme(fontSize.2xl);
-        font-weight: theme(fontWeight.semibold);
-    }
+  h4 {
+    font-size: theme('fontSize.lg');
+  }
 
-    h2.desktop {
-        font-size: theme(fontSize.3xl);
-    }
+  p {
+    font-weight: theme('fontWeight.normal');
+  }
 
-    h3 {
-        font-size: theme(fontSize.xl);
-        font-weight: theme(fontWeight.semibold);
-    }
-
-    h3.desktop {
-        font-size: theme(fontSize.2xl);
-    }
-
+  main {
+    padding: theme('spacing.4');
+  }
 }
 
 @layer components {
-    .nav-icon {
-        width: theme(width.8);
-        height: theme(height.8);
-        color: theme(colors.white)
-    }
-
-    .nav-link {
-        color: #fff;
-        font-weight: theme(fontWeight.semibold);
-        font-size: theme(fontSize.xl);
-        display: flex;
-        align-items: center;
-        gap: theme(gap.2);
-        padding: theme(padding.2) 0 theme(padding.2) 0;
-        border-radius: theme(borderRadius.md);
-    }
-    
-    .auth-input {
-        background-color: theme(colors.grey-300);
-        border-radius: theme(borderRadius.md);
-        width: theme(width.full);
-        padding: theme(padding.3) theme(padding.4) theme(padding.3) theme(padding.4);
-        margin: theme(margin.2) 0 theme(margin.2) 0;
-        box-shadow: theme(boxShadow.md);
-    }
-
-    .task-card {
-        border: 1px solid theme(colors.grey-300);
-        border-radius: theme(borderRadius.md);
-        width: theme(width.full);
-        padding: theme(padding.3) theme(padding.4) theme(padding.3) theme(padding.4);
-        box-shadow: theme(boxShadow.md);
-    }
-
-    .add-btn-orange-200 {
-        background-color: theme(colors.orange-200);
-        border-radius: theme(borderRadius.md);
-        width: theme(width.full);
-        padding: theme(padding.2) theme(padding.4) theme(padding.2) theme(padding.4);
-        box-shadow: theme(boxShadow.md);
-        color: theme(colors.white);
-        font-weight: theme(fontWeight.semibold);
-    }
-
-    .error-msg {
-        color: theme(colors.red.500);
-        font-size: theme(fontSize.sm);
-        font-weight: theme(fontWeight.semibold);
-    }
-
+  .error-msg {
+    color: theme('colors.red.500');
+  }
 }
 
 @layer utilities {
-
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .no-scrollbar {
-        -ms-overflow-style: none;  
-        scrollbar-width: none;  
-    }
-      
-    .greyout {
-        opacity: .5;
-        transition: opacity 300ms ease-in-out;
-        background-color: #000;
-    }
-
-    .nav-link:hover {
-        background-color: theme(colors.orange-200);
-    }
-
-    .action-btn:hover {
-        background-color: theme(colors.orange-300);
-        color: theme(colors.white);
-    }
-
-    .add-btn.extend {
-        padding: theme(padding.3) theme(padding.8) theme(padding.3) theme(padding.8);
-    }
-
-    .auth-input::placeholder {
-        color: theme(colors.grey-500);
-    }
 }
