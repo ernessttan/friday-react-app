@@ -24,7 +24,7 @@ function App() {
     >
       <Router>
         <Suspense fallback={<div>Loading...</div>}>
-          <div className="container max-w-xl p-5 mx-auto ">
+          <div className="container max-w-6xl p-5 mx-auto ">
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/signup" element={<Signup />} />

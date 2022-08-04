@@ -2,6 +2,7 @@ import { XIcon } from '@heroicons/react/solid';
 import { HomeIcon, ClipboardListIcon } from '@heroicons/react/outline';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Proptypes from 'prop-types';
+import ProjectsMenu from './ProjectsMenu';
 
 function Navbar({ isNavOpen, toggleNav, logout }) {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ function Navbar({ isNavOpen, toggleNav, logout }) {
           Tasks
         </NavLink>
       </div>
+      <ProjectsMenu />
       <div className="absolute bottom-0 right-0 p-3">
         <button
           className="font-bold text-white"

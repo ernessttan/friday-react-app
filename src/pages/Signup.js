@@ -44,7 +44,7 @@ function Signup() {
   };
 
   return (
-    <main className="p-8 mt-32 rounded-md border-grey-300 md:border md:p-12 md:shadow-lg">
+    <main className="p-5 mt-32 rounded-md border-grey-300 md:border md:p-8 md:shadow-lg">
       <h1 className="text-orange-500">
         <span className="text-black">Let&apos;s get</span>
         <br />

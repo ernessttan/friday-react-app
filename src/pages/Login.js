@@ -45,7 +45,7 @@ function Login() {
   };
 
   return (
-    <main className="p-8 mt-32 rounded-md border-grey-300 md:border md:p-12 md:shadow-lg">
+    <main className="p-5 mt-32 rounded-md border-grey-300 md:border md:p-8 md:shadow-lg">
       <h1 className="text-orange-500">
         <span className="text-black">Welcome Back</span>
         <br />
@@ -54,6 +54,7 @@ function Login() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-3 py-5">
         <div className="error-msg">{errorMessage}</div>
         <label>
+          Email
           <Input
             onChange={handleChange}
             name="email"
@@ -66,6 +67,7 @@ function Login() {
           />
         </label>
         <label>
+          Password
           <Input
             onChange={handleChange}
             name="password"
