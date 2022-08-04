@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
-import Button from '../components/buttons/Button';
+import AuthContext from '../../context/AuthContext';
+import Button from '../../components/buttons/Button';
 
 function Welcome() {
   const navigate = useNavigate();

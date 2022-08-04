@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../context/AuthContext';
-import Input from '../components/forms/Input';
-import SubmitButton from '../components/buttons/SubmitButton';
+import AuthContext from '../../context/AuthContext';
+import Input from '../../components/forms/Input';
+import SubmitButton from '../../components/buttons/SubmitButton';
 
 function Login() {
   const navigate = useNavigate();

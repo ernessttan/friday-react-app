@@ -39,8 +39,8 @@ body,
     font-weight: theme('fontWeight.normal');
   }
 
-  main {
-    padding: theme('spacing.4');
+  section {
+    padding: theme('padding.5') 0 theme('padding.5') 0;
   }
 }
 
@@ -51,4 +51,12 @@ body,
 }
 
 @layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
