@@ -3,6 +3,7 @@ import { MenuIcon, PlusIcon } from '@heroicons/react/solid';
 import AuthContext from '../../context/AuthContext';
 import Button from '../buttons/Button';
 import Navbar from './Navbar';
+import CreateTask from '../task/CreateTask';
 
 function Header() {
   const auth = useContext(AuthContext);
@@ -10,6 +11,7 @@ function Header() {
   const [isModalOpen, setisModalOpen] = useState(false);
 
   const toggleNav = () => setisNavOpen(!isNavOpen);
+
   const toggleModal = () => setisModalOpen(!isModalOpen);
 
   return (
@@ -21,7 +23,7 @@ function Header() {
       >
         <MenuIcon />
       </button>
-      <Button handleClick={toggleModal}>
+      <Button onClick={toggleModal}>
         <PlusIcon className="w-5 h-5" />
         Create Task
       </Button>
@@ -29,6 +31,10 @@ function Header() {
         isNavOpen={isNavOpen}
         toggleNav={toggleNav}
         logout={auth.logout}
+      />
+      <CreateTask
+        isModalOpen={isModalOpen}
+        toggleModal={toggleModal}
       />
     </header>
   );

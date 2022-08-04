@@ -1,13 +1,13 @@
 import { Droppable } from 'react-beautiful-dnd';
 import Proptypes from 'prop-types';
 import { useState } from 'react';
-// import AddTask from '../Task/AddTask';
+import CreateTask from '../task/CreateTask';
 
 function StatusColumn({ status, children }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleTaskModal = () => {
-    setModalIsOpen(!modalIsOpen);
+    setIsModalOpen(!isModalOpen);
   };
 
   return (
@@ -29,11 +29,11 @@ function StatusColumn({ status, children }) {
           >
             <p>Add Task</p>
           </button>
-          {/* <AddTask
-            modalIsOpen={modalIsOpen}
+          <CreateTask
+            isModalOpen={isModalOpen}
             toggleModal={toggleTaskModal}
-            status={title}
-          /> */}
+            status={status.title}
+          />
           {provided.placeholder}
         </div>
       )}
