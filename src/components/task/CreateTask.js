@@ -7,13 +7,13 @@ import AddDate from './AddDate';
 import AddStatus from './AddStatus';
 import SubmitButton from '../buttons/SubmitButton';
 
-function CreateTask({ isModalOpen, toggleModal, status }) {
+function CreateTask({ isModalOpen, toggleModal, status, dueDate }) {
   const auth = useContext(AuthContext);
   const [newTask, setNewTask] = useState({
     title: '',
     description: '',
     projectId: '',
-    dueDate: '',
+    dueDate: `${dueDate}`,
     completed: false,
     status: `${status}`,
     userId: auth.userId,
@@ -26,8 +26,8 @@ function CreateTask({ isModalOpen, toggleModal, status }) {
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       await fetch('https://friday-productivity.herokuapp.com/tasks', {
         method: 'POST',
@@ -41,7 +41,7 @@ function CreateTask({ isModalOpen, toggleModal, status }) {
           window.location.reload();
         });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
@@ -58,7 +58,7 @@ function CreateTask({ isModalOpen, toggleModal, status }) {
         />
         <div className="my-5">
           <AddProject setNewTask={setNewTask} userId={auth.userId} />
-          <AddDate setNewTask={setNewTask} dueDate="mm/dd/yyyy" />
+          <AddDate setNewTask={setNewTask} dueDate={dueDate} />
           <AddStatus newTask={newTask} handleChange={handleChange} />
         </div>
         <textarea
@@ -78,12 +78,14 @@ function CreateTask({ isModalOpen, toggleModal, status }) {
 
 CreateTask.defaultProps = {
   status: 'To Do',
+  dueDate: '',
 };
 
 CreateTask.propTypes = {
   isModalOpen: Proptypes.bool.isRequired,
   toggleModal: Proptypes.func.isRequired,
   status: Proptypes.string,
+  dueDate: Proptypes.string,
 };
 
 export default CreateTask;

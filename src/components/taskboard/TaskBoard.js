@@ -11,7 +11,6 @@ const STATUSES = [
 ];
 
 function TaskBoard({ token, setTasks, tasks }) {
-  console.log(tasks);
   const updateStatus = async (currentTask, newStatus) => {
     try {
       await fetch(

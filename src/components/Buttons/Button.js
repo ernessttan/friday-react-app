@@ -6,7 +6,7 @@ function Button({ children, className, onClick }) {
     <button
       onClick={onClick}
       type="button"
-      className={`flex items-center justify-center rounded-full border border-orange-300 text-orange-300 px-4 py-2
+      className={`flex items-center justify-center gap-2 rounded-full border border-orange-300 text-orange-300 px-4 py-2
       hover:bg-orange-500 hover:text-white ${className}`}
     >
       {children}

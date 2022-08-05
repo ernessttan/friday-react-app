@@ -39,6 +39,10 @@ body,
     font-weight: theme('fontWeight.normal');
   }
 
+  main {
+    margin: theme('margin.5') 0 theme('margin.5') 0;
+  }
+
   section {
     padding: theme('padding.5') 0 theme('padding.5') 0;
   }

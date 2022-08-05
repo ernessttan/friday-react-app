@@ -1,6 +1,7 @@
 import { Droppable } from 'react-beautiful-dnd';
 import Proptypes from 'prop-types';
 import { useState } from 'react';
+import format from 'date-fns/format';
 import CreateTask from '../task/CreateTask';
 
 function StatusColumn({ status, children }) {
@@ -25,7 +26,7 @@ function StatusColumn({ status, children }) {
           <button
             onClick={toggleTaskModal}
             type="button"
-            className="add-btn-orange-200 w-full flex items-center justify-center my-3"
+            className="bg-orange-300 py-2 font-bold text-white rounded-md w-full flex items-center justify-center my-3"
           >
             <p>Add Task</p>
           </button>
@@ -33,6 +34,7 @@ function StatusColumn({ status, children }) {
             isModalOpen={isModalOpen}
             toggleModal={toggleTaskModal}
             status={status.title}
+            dueDate={format(new Date(), 'MM/dd/yyyy')}
           />
           {provided.placeholder}
         </div>

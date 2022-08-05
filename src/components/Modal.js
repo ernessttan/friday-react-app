@@ -8,6 +8,8 @@ function Modal({ children, isOpen, toggleModal, options }) {
     <ReactModal
       isOpen={isOpen}
       ariaHideApp={false}
+      onRequestClose={toggleModal}
+      shouldCloseOnOverlayClick
       className="z-10 max-w-2xl p-4 mx-5 mt-16 bg-white border rounded-lg shadow-xl md:mx-auto border-grey-300 md:p-8"
     >
       <div className="flex justify-end gap-3 mb-5">

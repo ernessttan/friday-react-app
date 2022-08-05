@@ -39,7 +39,7 @@ function TasksToday({ tasks }) {
       </div>
       <div>
         {selectedView === 'List' ? (
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasksToday} />
         ) : (
           <TaskBoard tasks={tasksToday} token={auth.token} setTasks={setTasksToday} />
         )}
@@ -54,7 +54,7 @@ TasksToday.propTypes = {
     title: Proptypes.string.isRequired,
     description: Proptypes.string.isRequired,
     dueDate: Proptypes.string.isRequired,
-    projectId: Proptypes.string.isRequired,
+    projectId: Proptypes.string,
     userId: Proptypes.string.isRequired,
     completed: Proptypes.bool.isRequired,
   })).isRequired,

@@ -29,7 +29,7 @@ function AddDate({ setNewTask, dueDate }) {
           calendarClassName="w-full"
           onChange={handleDateChange}
           selected={startDate}
-          placeholderText={dueDate}
+          placeholderText={dueDate || 'mm/dd/yyyy'}
         />
       </div>
 

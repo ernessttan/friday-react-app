@@ -1,15 +1,14 @@
 import Proptypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 import { CalendarIcon } from '@heroicons/react/outline';
-import { DotsHorizontalIcon } from '@heroicons/react/solid';
 import { useEffect, useState } from 'react';
-// import EditTask from '../Task/EditTask';
+import EditTask from '../task/EditTask';
 
 function TaskBoardCard({ id, index }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [task, setTask] = useState();
 
-  const toggleModal = () => setModalIsOpen(!modalIsOpen);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   useEffect(() => {
     const fetchTask = async () => {
@@ -22,7 +21,7 @@ function TaskBoardCard({ id, index }) {
       }
     };
     fetchTask();
-  }, []);
+  }, [id]);
 
   return task && (
     <>
@@ -37,7 +36,6 @@ function TaskBoardCard({ id, index }) {
           >
             <div className="flex items-center justify-between">
               <h3>{task.title}</h3>
-              <DotsHorizontalIcon className="w-4 h-4" />
             </div>
             <p className="text-left py-2">{task.description}</p>
             <div className="flex items-center gap-2">
@@ -47,12 +45,12 @@ function TaskBoardCard({ id, index }) {
           </div>
         )}
       </Draggable>
-      {/* <EditTask
+      <EditTask
         setTask={setTask}
         task={task}
-        modalIsOpen={modalIsOpen}
+        isModalOpen={isModalOpen}
         toggleModal={toggleModal}
-      /> */}
+      />
     </>
   );
 }

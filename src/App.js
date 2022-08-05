@@ -11,6 +11,8 @@ function App() {
   const Signup = lazy(() => import('./pages/Authentication/Signup'));
   const Login = lazy(() => import('./pages/Authentication/Login'));
   const Home = lazy(() => import('./pages/Home/Home'));
+  const Project = lazy(() => import('./pages/Project'));
+  const Tasks = lazy(() => import('./pages/Tasks'));
 
   return (
     <AuthContext.Provider
@@ -30,6 +32,8 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/project/:pid" element={<Project />} />
+              <Route path="/tasks" element={<Tasks />} />
             </Routes>
           </div>
         </Suspense>
