@@ -12,9 +12,7 @@ function ProjectsMenu() {
 
   const fetchProjects = useCallback(async () => {
     try {
-      await fetch(
-        `https://friday-productivity.herokuapp.com/projects/user/${auth.userId}`
-      )
+      await fetch(`https://friday-productivity.herokuapp.com/projects/user/${auth.userId}`)
         .then((res) => res.json())
         .then((data) => setProjects(data.projects));
     } catch (error) {
@@ -68,7 +66,7 @@ function ProjectsMenu() {
           toggleModal={toggleModal}
           fetchProjects={fetchProjects}
         />
-        <div>
+        <div className="flex flex-col gap-4 py-3">
           {projects.map((project) => (
             <Project
               key={project.id}
