@@ -45,8 +45,8 @@ function Signup() {
   };
 
   return (
-    <main className="mt-32 flex justify-center">
-      <div className="container max-w-xl border border-gray-300 rounded-md p-12 bg-white">
+    <main className="mt-20 flex justify-center">
+      <div className="container max-w-xl border-grey-300 md:border-2 md:shadow-lg rounded-md p-12 bg-white">
         <h1 className="text-orange-500">
           <span className="text-black">Let&apos;s get</span>
           {' '}
