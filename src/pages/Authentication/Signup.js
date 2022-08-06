@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext';
@@ -44,55 +45,58 @@ function Signup() {
   };
 
   return (
-    <main className="p-5 mt-32 rounded-md border-grey-300 md:border md:p-8 md:shadow-lg">
-      <h1 className="text-orange-500">
-        <span className="text-black">Let&apos;s get</span>
-        <br />
-        Started.
-      </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 py-5">
-        <label>
-          First Name
-          <Input
-            name="firstName"
-            type="text"
-            value={signUpInfo.firstName}
-            placeholder="First Name"
-            className="w-full p-2 py-3 rounded-md bg-grey-300"
-            errorMessage="Please enter your first name"
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Email
-          <Input
-            name="email"
-            type="email"
-            value={signUpInfo.email}
-            placeholder="Email"
-            className="w-full p-2 py-3 rounded-md bg-grey-300"
-            errorMessage="Please enter a valid email"
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <Input
-            name="password"
-            type="password"
-            value={signUpInfo.password}
-            placeholder="Password"
-            className="w-full p-2 py-3 rounded-md bg-grey-300"
-            pattern="^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,20}$"
-            errorMessage="Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!"
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <SubmitButton className="py-3">Sign Up</SubmitButton>
-      </form>
+    <main className="mt-32 flex justify-center">
+      <div className="container max-w-xl border border-gray-300 rounded-md p-12 bg-white">
+        <h1 className="text-orange-500">
+          <span className="text-black">Let&apos;s get</span>
+          {' '}
+          <br />
+          Started.
+        </h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 py-3">
+          <div className="error-msg">{errorMessage}</div>
+          <label>
+            Email
+            <Input
+              onChange={handleChange}
+              name="email"
+              type="email"
+              value={signUpInfo.firstName}
+              placeholder="Email"
+              className="w-full p-2 py-3 rounded-md bg-grey-300"
+              errorMessage="Please enter a your first name"
+              required
+            />
+          </label>
+          <label>
+            Email
+            <Input
+              onChange={handleChange}
+              name="email"
+              type="email"
+              value={signUpInfo.email}
+              placeholder="Email"
+              className="w-full p-2 py-3 rounded-md bg-grey-300"
+              errorMessage="Please enter a valid email"
+              required
+            />
+          </label>
+          <label>
+            Password
+            <Input
+              onChange={handleChange}
+              name="password"
+              type="password"
+              value={signUpInfo.password}
+              placeholder="Password"
+              className="w-full p-2 py-3 rounded-md bg-grey-300"
+              errorMessage="Please enter a valid password"
+              required
+            />
+          </label>
+          <SubmitButton>Signup</SubmitButton>
+        </form>
+      </div>
     </main>
   );
 }

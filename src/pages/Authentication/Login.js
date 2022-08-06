@@ -45,42 +45,44 @@ function Login() {
   };
 
   return (
-    <main className="p-5 mt-32 rounded-md border-grey-300 md:border md:p-8 md:shadow-lg">
-      <h1 className="text-orange-500">
-        <span className="text-black">Welcome Back</span>
-        <br />
-        Let&apos;s go!
-      </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 py-5">
-        <div className="error-msg">{errorMessage}</div>
-        <label>
-          Email
-          <Input
-            onChange={handleChange}
-            name="email"
-            type="email"
-            value={loginInfo.email}
-            placeholder="Email"
-            className="w-full p-2 py-3 rounded-md bg-grey-300"
-            errorMessage="Please enter a valid email"
-            required
-          />
-        </label>
-        <label>
-          Password
-          <Input
-            onChange={handleChange}
-            name="password"
-            type="password"
-            value={loginInfo.password}
-            placeholder="Password"
-            className="w-full p-2 py-3 rounded-md bg-grey-300"
-            errorMessage="Please enter a valid password"
-            required
-          />
-        </label>
-        <SubmitButton>Login</SubmitButton>
-      </form>
+    <main className="mt-32 flex justify-center">
+      <div className="container max-w-lg border border-gray-300 rounded-md p-12 bg-white">
+        <h1 className="text-orange-500">
+          <span className="text-black">Welcome Back</span>
+          <br />
+          Let&apos;s go!
+        </h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 py-3">
+          <div className="error-msg">{errorMessage}</div>
+          <label>
+            Email
+            <Input
+              onChange={handleChange}
+              name="email"
+              type="email"
+              value={loginInfo.email}
+              placeholder="Email"
+              className="w-full p-2 py-3 rounded-md bg-grey-300"
+              errorMessage="Please enter a valid email"
+              required
+            />
+          </label>
+          <label>
+            Password
+            <Input
+              onChange={handleChange}
+              name="password"
+              type="password"
+              value={loginInfo.password}
+              placeholder="Password"
+              className="w-full p-2 py-3 rounded-md bg-grey-300"
+              errorMessage="Please enter a valid password"
+              required
+            />
+          </label>
+          <SubmitButton>Login</SubmitButton>
+        </form>
+      </div>
     </main>
   );
 }

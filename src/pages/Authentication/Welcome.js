@@ -34,20 +34,22 @@ function Welcome() {
   };
 
   return (
-    <main className="mt-32 rounded-md border-grey-300 md:border md:p-8 md:py-20 md:shadow-lg">
-      <h1 className="text-orange-500">
-        <span className="text-black">Introducing</span>
-        <br />
-        Friday.
-      </h1>
-      <div className="error-msg">{errorMessage}</div>
-      <p className="py-3 text-xl font-normal">
-        A task management app to help you get to Friday faster.
-      </p>
-      <div className="flex flex-col gap-3 py-5">
-        <Button onClick={() => navigate('/signup')}>Sign Up</Button>
-        <Button onClick={() => navigate('/login')}>Login</Button>
-        <Button onClick={handleGuestLogin}>Take a Look Inside</Button>
+    <main className="mt-32 flex flex-col items-center">
+      <div className="rounded-md border-grey-300 md:border-2 md:shadow-lg p-12 py-16">
+        <h1 className="text-orange-500">
+          <span className="text-black">Introducing</span>
+          <br />
+          Friday.
+        </h1>
+        <div className="error-msg">{errorMessage}</div>
+        <p className="py-3 text-xl font-normal">
+          A task management app to help you get to Friday faster.
+        </p>
+        <div className="flex flex-col gap-3 py-5">
+          <Button onClick={() => navigate('/signup')}>Sign Up</Button>
+          <Button onClick={() => navigate('/login')}>Login</Button>
+          <Button onClick={handleGuestLogin}>Take a Look Inside</Button>
+        </div>
       </div>
     </main>
   );
