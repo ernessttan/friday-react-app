@@ -16,3 +16,13 @@ This project was created with:
 - NodeJS
 - TailwindCSS
 - Firebase
+
+## Installation
+
+1. `git clone https://github.com/ernessttan/friday-react-app.git`
+
+2. `cd friday-react-app`
+
+3. `npm install`
+
+4. `npm start`
